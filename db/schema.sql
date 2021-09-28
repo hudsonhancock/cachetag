@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS cachetag_db;
+CREATE DATABASE cachetag_db;
