@@ -8,7 +8,7 @@ class HashTag extends Model {};
 
 HashTag.init(
     {
-        hash_tag_id: {
+        hashtag_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
@@ -28,7 +28,7 @@ HashTag.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'hash_tag',
+        modelName: 'hashtag',
     }
 );
 
