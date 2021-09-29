@@ -1,7 +1,18 @@
+:root {
+  --ocean: #05ab81; 
+  --lime: #B4A725; 
+  --canary: #F6A421;
+  --salmon: #FC4F50;
+  --dark: #dc4646;
+  --round: 25px; 
+}
+* {
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+}
 header, .project:not(:last-child) {
   border-bottom: 1px solid #ccc;
 }
-
 .no-button {
   background: none;
   border: none;
@@ -11,14 +22,46 @@ header, .project:not(:last-child) {
   text-decoration: none;
   font-size: 100%;
 }
-
 .no-button:hover {
   color: #065b83;
   text-decoration: underline;
 }
-
 .dollar-amount {
   color: #056605;
   font-weight: bold;
   margin-left: -5px;
+}
+
+/* Nav Bar */
+.custom_nav {
+  background-color: var(--salmon);
+  color: white; 
+}
+.custom_nav li:hover {
+  background-color: var(--dark);
+}
+
+/* Page Containers */
+.custom_container {
+  background-color: var(--ocean); 
+  border: 5px solid var(--canary); 
+  border-radius: var(--round);
+  padding: var(--round); 
+  color: white; 
+  margin-top: 50px;
+}
+.custom_btn {
+  background-color: var(--salmon);
+  color:white; 
+  border-radius: var(--round);
+}
+.custom_btn:hover {
+  background-color: var(--dark);
+}
+.flex {
+  display: flex; 
+  justify-content: space-between;
+}
+.save_icon:hover {
+  cursor: pointer;
 }
