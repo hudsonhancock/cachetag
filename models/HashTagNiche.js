@@ -26,8 +26,8 @@ HashTagNiche.init(
         hashtag_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: "hash_tag",
-                key: "hash_tag_id",
+                model: "hashtag",
+                key: "hashtag_id",
                 unique: false
             }
         }
