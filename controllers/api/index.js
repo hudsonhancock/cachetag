@@ -10,4 +10,5 @@ const collectiontagRoutes = require("./collectiontagRoutes");
 router.use('/users', userRoutes);
 router.use('/niches', nicheRoutes);
 
+
 module.exports = router;
