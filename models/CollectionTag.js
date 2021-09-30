@@ -4,30 +4,30 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 // Initialize Collection model (table) by extending off Sequelize's Model class
-// Collection is a join table of user and niche
-class Collection extends Model {}
+// CollectionTag is a join table of collection and tag
+class CollectionTag extends Model {}
 
-Collection.init(
+CollectionTag.init(
     {
-        collection_id: {
+        collection_tag_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
         },
-        user_id: {
+        collection_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: "user",
-                key: "user_id",
+                model: "collection",
+                key: "collection_id",
                 unique: false
             }
         },
-        niche_id: {
+        hash_tag_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: "niche",
-                key: "niche_id",
+                model: "hashtag",
+                key: "hashtag_id",
                 unique: false
             }
         }
@@ -37,8 +37,8 @@ Collection.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: "collection"
+        modelName: "collection_tag"
     }
 );
 
-module.exports = Collection;
+module.exports = CollectionTag;
