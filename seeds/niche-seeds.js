@@ -2,19 +2,19 @@ const { Niche } = require('../models');
 
 const nicheData = [
   {
-    niche_name: 'Shirts',
+    niche_name: 'Books',
   },
   {
     niche_name: 'Shorts',
   },
   {
-    niche_name: 'Music',
+    niche_name: `Rock \'n Roll`,
   },
   {
-    niche_name: 'Hats',
+    niche_name: 'Dogs',
   },
   {
-    niche_name: 'Shoes',
+    niche_name: 'Space',
   },
 ];
 

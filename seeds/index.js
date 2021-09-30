@@ -1,5 +1,5 @@
 const seedNiches = require('./niche-seeds');
-//const seedProducts = require('./product-seeds');
+const seedUsers = require('./user-seeds');
 const seedHashTags = require('./hashtag-seeds');
 //const seedProductTags = require('./product-tag-seeds');
 
@@ -12,8 +12,8 @@ const seedAll = async () => {
   await seedNiches();
   console.log('\n----- NICHES SEEDED -----\n');
 
-  //await seedProducts();
-  //console.log('\n----- PRODUCTS SEEDED -----\n');
+  await seedUsers();
+  console.log('\n----- USERS SEEDED -----\n');
 
   await seedHashTags();
   console.log('\n----- HASHTAGS SEEDED -----\n');
