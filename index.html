@@ -4,17 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>CacheTag</title>
     <!-- Materialize Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Google Fonts Link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
     <!-- My style sheet -->
-    <link rel="stylesheet" href="script.css">
-    <title>CacheTag</title>
+    <link rel="stylesheet" href="/public/css/style.css">
 </head>
 <body>
     <!-- Nav Bar -->
     <nav>
-        <div class="nav-wrapper">
+        <div class="nav-wrapper custom_nav">
           <a href="#" class="brand-logo">Logo</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="">Profile</a></li>
@@ -30,7 +34,7 @@
       </nav>
       <!-- Login Page -->
       <section>
-        <div class="container">
+        <div class="container custom_container">
             <form class="col s12">
               <div class="row">
                 <div class="input-field col s12">
@@ -42,20 +46,22 @@
                   <input id="user_password" type="password" placeholder="Enter Your Password" class="validate">
                 </div>
               </div>
-              <button>Login</button>
+              <button class="btn-large custom_btn login_btn">Login</button>
               <p>Don't have an account?</p>
-              <a href="">Sign Up Here!</a>
+              <button class="btn custom_btn">Sign Up Here!</button> 
             </form>
           </div>
       </section>
 
       <!-- Trending Page -->
-      <section class="container">
-      <h1>What's Hot!</h1>
-      This will display the top 10 trending hashtags
-      <p>#MostPopularHashtag</p>
-      <!-- When User clicks on the save icon, then it shows a dropdown list of the user's saved niches -->
-      <i class="material-icons">save</i>
+      <section class="container custom_container">
+      <h1 class="page_header">What's Hot!</h1>
+      <!-- This will display the top 10 trending hashtags -->
+      <div class="flex sub_container">
+        <p>#MostPopularHashtag</p>
+        <!-- When User clicks on the save icon, then it shows a dropdown list of the user's saved niches -->
+        <button class="btn custom_btn"><i class="material-icons save_icon">save</i></button>
+      </div>
       </section>
 
       <!-- Add a Niche Page -->
