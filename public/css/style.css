@@ -50,6 +50,17 @@ header, .project:not(:last-child) {
   color: white; 
   margin-top: 50px;
 }
+.page_header {
+  background-color: var(--canary);
+  text-align: center;
+  border: 3px solid white; 
+  border-radius: var(--round);
+  
+}
+.sub_container {
+  background-color: var(--salmon);
+  border-radius: var(--round);
+}
 .custom_btn {
   background-color: var(--salmon);
   color:white; 
@@ -61,6 +72,13 @@ header, .project:not(:last-child) {
 .flex {
   display: flex; 
   justify-content: space-between;
+  align-items: center;
+}
+
+/* Login Page  */
+.login_btn {
+  display: block; 
+  margin: 0 auto; 
 }
 .save_icon:hover {
   cursor: pointer;
