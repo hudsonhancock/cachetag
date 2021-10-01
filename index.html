@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta name="viewport" initial-scale=1.0">
     <title>CacheTag</title>
     <!-- Materialize Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -23,6 +23,7 @@
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="">Profile</a></li>
             <li><a href="">Add A Niche</a></li>
+            <li><a href="">Add A Hashtag</a></li>
             <li><a href="">Login</a></li>
             <li><a href="">Logout</a></li>
           </ul>
@@ -60,43 +61,76 @@
       <div class="flex sub_container">
         <p>#MostPopularHashtag</p>
         <!-- When User clicks on the save icon, then it shows a dropdown list of the user's saved niches -->
-        <button class="btn custom_btn"><i class="material-icons save_icon">save</i></button>
+        <button class="btn save_btn"><i class="material-icons save_icon">save</i></button>
       </div>
       </section>
 
       <!-- Add a Niche Page -->
-      <section class="container">
-        <h1>Add A Niche</h1>
+      <section class="container custom_container">
+        <h1 class="page_header">Add A Niche</h1>
           <form class="col s12">
             <div class="row">
-              <div class="input-field col s12">
-                <textarea id="textarea1" placeholder=" Niche" class="materialize-textarea"></textarea>
+              <div class="input-field col s12 flex">
+                <textarea placeholder=" Type Your Niche Here" class="materialize-textarea"></textarea>
+                <button class="btn save_btn"><i class="material-icons save_icon">save</i></button>
+              </div>
+            </div>
+            <div class="sub_container">
+              <p class="center">Your Saved Niches:</p>
+              <div class="flex">
+                <p>Niche Name</p>
+                <button class="btn save_btn"><i class="material-icons">delete</i></button>
               </div>
             </div>
           </form>
           <!-- This will display the user's niches -->
       </section>
 
+      <!-- Add a Hashtag Page -->
+      <section class="container custom_container">
+        <h1 class="page_header">Add A Hashtag</h1>
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s12 flex">
+                <textarea placeholder="Search for a Hashtag" class="materialize-textarea"></textarea>
+                <button class="btn save_btn"><i class="material-icons save_icon">search</i></button>
+              </div>
+            </div>
+            <div class="sub_container flex">
+              <p>#hashtags</p>
+              <button class="btn save_btn"><i class="material-icons save_icon">save</i></button>
+            </div>
+          </form>
+          <!-- This will display the hashtag search results from the API call -->
+      </section>
+
       <!-- User Profile Page -->
-      <section class="container">
-        <h1>User Name will be displayed here</h1>
+      <section class="container custom_container">
+        <h1 class="page_header">Username</h1>
         <!-- Each Niche that the user has saved will be displayed here. When User clicks on a niche button it will show them the hashtags that are related to that niche -->
-        <button>Niche 1</button>
-        <button>Niche 2</button>
-        <button>Niche 3</button>
-        <button>Niche 4</button>
+        <div class="flex overflow">
+          <button class="niche_btn">Niche 1</button>
+          <button class="niche_btn">Niche 2</button>
+          <button class="niche_btn">Niche 3</button>
+          <button class="niche_btn">Niche 4</button>
+          <button class="niche_btn">Niche 5</button>
+          <button class="niche_btn">Niche 6</button>
+        </div>
+        <!-- I want each button's background color to be randomly generated from an array of selected colors -->
       </section>
       
       <!-- Saved Hashtags in Niche Page -->
-      <section class="container">
-        <h1>Name of Niche will be displayed here</h1>
+      <section class="container custom_container">
+        <h1 class="page_header">Niche Name</h1>
         <!-- The hashtags below are what the user has saved to that niche -->
-        <button>#hashtag1</button>
-        <button>#hashtag2</button>
-        <button>#hashtag3</button>
-        <button>#hashtag4</button>
+        <div class="flex overflow">
+          <button class="niche_btn">#hashtag1</button>
+          <button class="niche_btn">#hashtag2</button>
+          <button class="niche_btn">#hashtag3</button>
+          <button class="niche_btn">#hashtag4</button>
+        </div>
         <!-- IDEA: Add a floating action button from materialize next to each button so that user can copy or see data of that hashtag -->
-        <div class="fixed-action-btn">
+        <!-- <div class="fixed-action-btn">
           <a class="btn-floating btn-large red">
             <i class="large material-icons">mode_edit</i>
           </a>
@@ -106,7 +140,7 @@
             <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
             <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
           </ul>
-        </div>
+        </div> -->
         <!-- Javascript for Action Button -->
         <!-- Hover Activated Option -->
         <!-- document.addEventListener('DOMContentLoaded', function() {
@@ -136,4 +170,5 @@
       </footer>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="./public/js/color.js"></script>
 </html>
