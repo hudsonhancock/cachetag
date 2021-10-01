@@ -1,42 +1,17 @@
-<div class="row">
-  <div class="col-md-6">
-    <h2>Login</h2>
-
-    <form class="form login-form">
-      <div class="form-group">
-        <label for="email-login">email:</label>
-        <input class="form-input" type="text" id="email-login" />
-      </div>
-      <div class="form-group">
-        <label for="password-login">password:</label>
-        <input class="form-input" type="password" id="password-login" />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">login</button>
-      </div>
-    </form>
+<form class="col s12 login-form">
+  <div class="row">
+    <div class="input-field col s12">
+      <input id="email_login" type="email" placeholder="Enter Your Email Address" class="validate">
+    </div>
   </div>
-  <div class="col-md-6">
-    <h2>Signup</h2>
-
-    <form class="form signup-form">
-      <div class="form-group">
-        <label for="name-signup">name:</label>
-        <input class="form-input" type="text" id="name-signup" />
-      </div>
-      <div class="form-group">
-        <label for="email-signup">email:</label>
-        <input class="form-input" type="text" id="email-signup" />
-      </div>
-      <div class="form-group">
-        <label for="password-signup">password:</label>
-        <input class="form-input" type="password" id="password-signup" />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">signup</button>
-      </div>
-    </form>
+  <div class="row">
+    <div class="input-field col s12">
+      <input id="password_login" type="password" placeholder="Enter Your Password" class="validate">
+    </div>
   </div>
-</div>
+  <button type="submit" class="btn-large custom_btn login_btn">Login</button>
+  <p>Don't have an account?</p>
+  <button class="btn custom_btn">Sign Up Here!</button> 
+</form>
 
 <script src="./js/login.js"></script>
