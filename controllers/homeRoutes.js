@@ -50,6 +50,15 @@ router.get('/profile', async (req, res) => {
   }
 });
 
+//displays the Register Page
+router.get('/register', async (req, res) => {
+  try {
+    res.render('register'); 
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 router.get('/project/:id', async (req, res) => {
   try {
     // const projectData = await Project.findByPk(req.params.id, {
