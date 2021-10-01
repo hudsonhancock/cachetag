@@ -36,15 +36,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 const rp = require('request-promise');
-const cheerio = require('cheerio');
+// const cheerio = require('cheerio');
  
 
 // + Keyword that will be used to find tags that are included on posts with the tag you set as keyword 
-let keyWord = "gold";
+let keyWord = "christmas";
 
 
-// + The instagram URL to scrape hashtags from
-let URL = `https://www.instagram.com/explore/tags/${keyWord}/`
+// + The instagram URL to scrape hashtags from with Regex
+// let URL = `https://www.instagram.com/explore/tags/${keyWord}/`
+
+// + The AJAX URL of the hashtag source that we use to gather related hashtags
+let URL = `https://www.tagsfinder.com/en-us/ajax/?hashtag=${keyWord}&limit=10&country=us&custom=&type=live`
 
 
 // + Uses request-promise to fetch the HTML from the instagram website
