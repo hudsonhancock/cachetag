@@ -20,12 +20,12 @@
     "express-handlebars": "^5.2.0",
     "express-session": "^1.17.1",
     "mysql2": "^2.2.5",
-    "nodemon": "^2.0.13",
     "sequelize": "^6.3.5"
   },
   "devDependencies": {
     "eslint": "^7.12.1",
     "eslint-config-prettier": "^6.15.0",
-    "prettier": "^2.1.2"
+    "prettier": "^2.1.2",
+    "nodemon": "^2.0.12"
   }
 }
