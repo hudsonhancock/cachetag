@@ -32,6 +32,24 @@ router.get('/addHashtag', async (req, res) => {
   }
 });
 
+//displays the add a Niche Page
+router.get('/addNiche', async (req, res) => {
+  try {
+    res.render('addNiche'); 
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+//displays the User's Profile Page
+router.get('/profile', async (req, res) => {
+  try {
+    res.render('profile'); 
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 router.get('/project/:id', async (req, res) => {
   try {
     // const projectData = await Project.findByPk(req.params.id, {
