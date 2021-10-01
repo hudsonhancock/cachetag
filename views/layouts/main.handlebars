@@ -5,28 +5,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CacheTag - Your one stop for social media hashtags</title>
-  <link rel="stylesheet" href="/css/jass.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Google Fonts Link -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+  <!-- My style sheet -->
   <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
-  <div class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
-      <h1>
-        <span role="img" aria-label="money">💸</span>
-        <a href="/">CacheTag</a>
-      </h1>
-      <nav>
-        <!-- Conditionally render login or logout links -->
-        {{#if logged_in}}
-        <a href="/profile">profile</a> |
-        <button class="no-button" id="logout">logout</button>
-        {{else}}
-        <a href="/login">login</a>
-        {{/if}}
+  {{!-- Nav Bar --}}
+  <nav>
+        <div class="nav-wrapper custom_nav">
+          <a href="/" class="brand-logo">CacheTag</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            {{!-- {{#if logged_in}} --}}
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/addNiche">Add A Niche</a></li>
+            <li><a href="/addHashtag">Add A Hashtag</a></li>
+            <li><button class="no-button" id="logout" href="">Logout</button></li>
+            {{!-- {{else}} --}}
+            <li><a href="/login">Login</a></li>
+          </ul>
+        </div>
       </nav>
+      
     </header>
-    <main class="container container-fluid mt-5">
+    <main class="container custom_container">
       <!-- Render the sub layout -->
       {{{ body }}}
     </main>
@@ -34,11 +41,18 @@
       
     </footer>
   </div>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <!-- Render script for logged in users only -->
-  {{#if logged_in}}
+  {{!-- {{#if logged_in}} --}}
   <script src="/js/logout.js"></script>
-  {{/if}}
+  {{!-- {{/if}} --}}
+  <!-- Save Options Dropdown -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.dropdown-trigger');
+  var instances = M.Dropdown.init(elems);
+});
+</script>
 </body>
 
 </html>

@@ -35,65 +35,65 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-const rp = require('request-promise');
-// const cheerio = require('cheerio');
+// const rp = require('request-promise');
+// // const cheerio = require('cheerio');
  
 
-// + Keyword that will be used to find tags that are included on posts with the tag you set as keyword 
-let keyWord = "christmas";
+// // + Keyword that will be used to find tags that are included on posts with the tag you set as keyword 
+// let keyWord = "christmas";
 
 
-// + The instagram URL to scrape hashtags from with Regex
-// let URL = `https://www.instagram.com/explore/tags/${keyWord}/`
+// // + The instagram URL to scrape hashtags from with Regex
+// // let URL = `https://www.instagram.com/explore/tags/${keyWord}/`
 
-// + The AJAX URL of the hashtag source that we use to gather related hashtags
-let URL = `https://www.tagsfinder.com/en-us/ajax/?hashtag=${keyWord}&limit=10&country=us&custom=&type=live`
+// // + The AJAX URL of the hashtag source that we use to gather related hashtags
+// let URL = `https://www.tagsfinder.com/en-us/ajax/?hashtag=${keyWord}&limit=10&country=us&custom=&type=live`
 
 
-// + Uses request-promise to fetch the HTML from the instagram website
-rp(URL)
-    .then((html) => {
+// // + Uses request-promise to fetch the HTML from the instagram website
+// rp(URL)
+//     .then((html) => {
 
-        // + Call the scrapeHashtags function, passing in the HTML we just scraped. scrapeHashtags(html) will find all of the hashtags on the instagram page, then add them to a matches array and return that
-        let hashtags = scrapeHashtags(html);
+//         // + Call the scrapeHashtags function, passing in the HTML we just scraped. scrapeHashtags(html) will find all of the hashtags on the instagram page, then add them to a matches array and return that
+//         let hashtags = scrapeHashtags(html);
 
-        // + Remove all of the duplicates from the scraped hashtags returned from scrapeHashtags(html)
-        hashtags = removeDuplicates(hashtags);
-        hashtags = hashtags.map(ele => "#" + ele);
-        // let regExVar = new RegExp(keyWord);
-        filteredTags = hashtags.filter(str => str.match(keyWord));
-        console.log(hashtags);
-        console.log(filteredTags);
-        return hashtags;
-      })
-    .catch((err) => {
-        console.log(err);
-    });
+//         // + Remove all of the duplicates from the scraped hashtags returned from scrapeHashtags(html)
+//         hashtags = removeDuplicates(hashtags);
+//         hashtags = hashtags.map(ele => "#" + ele);
+//         // let regExVar = new RegExp(keyWord);
+//         filteredTags = hashtags.filter(str => str.match(keyWord));
+//         console.log(hashtags);
+//         console.log(filteredTags);
+//         return hashtags;
+//       })
+//     .catch((err) => {
+//         console.log(err);
+//     });
  
-// + Call the scrapeHashtags function to find all of the hashtags on the instagram website. 
-const scrapeHashtags = (html) => {  
-    var regex = /(?:^|\s)(?:#)([a-zA-Z\d]+)/gm;
-    var matches = [];
-    var match;
+// // + Call the scrapeHashtags function to find all of the hashtags on the instagram website. 
+// const scrapeHashtags = (html) => {  
+//     var regex = /(?:^|\s)(?:#)([a-zA-Z\d]+)/gm;
+//     var matches = [];
+//     var match;
  
-    while ((match = regex.exec(html))) {
-        matches.push(match[1]);
-    }
+//     while ((match = regex.exec(html))) {
+//         matches.push(match[1]);
+//     }
  
-    return matches;
-}
+//     return matches;
+// }
  
-const removeDuplicates = (arr) => {
-    let newArr = [];
+// const removeDuplicates = (arr) => {
+//     let newArr = [];
  
-    arr.map(ele => {
-        if (newArr.indexOf(ele) == -1){
-            newArr.push(ele)
-        }
-    })
+//     arr.map(ele => {
+//         if (newArr.indexOf(ele) == -1){
+//             newArr.push(ele)
+//         }
+//     })
      
-    return newArr;
-}
+//     return newArr;
+// }
 
 
 app.use(routes);

@@ -1,5 +1,21 @@
+<!-- Trending Page -->
+<h1 class="page_header">What's Hot!</h1>
+  <!-- This will display the top 10 trending hashtags -->
+  <div class="flex_row sub_container">
+    {{#each hashtags as |hashtag| }}
+    <p>{{text}}</p>
+    {{/each}}
+    <button class="btn save_btn dropdown-trigger" data-target='dropdown1'><i class="material-icons save_icon">save</i></button>
+    <!-- When User clicks on the save icon, then it shows a dropdown list of the user's saved niches -->
+    <ul id='dropdown1' class='dropdown-content'>
+      {{!-- {{#each niches as |niche|}} --}}
+      <li><a href="#!">{{niche.niche_name}}</a></li>
+      {{!-- {{/each}} --}}
+    </ul>
+  </div>
+
 <!-- Loop over each object in the projects array -->
-{{#each projects as |project| }}
+{{!-- {{#each projects as |project| }}
 <div class="row mb-4 project">
   <div class="col-md-5">
     <h2>
@@ -21,4 +37,4 @@
     </p>
   </div>
 </div>
-{{/each}}
+{{/each}} --}}

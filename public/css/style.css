@@ -75,6 +75,7 @@
 .save_btn {
   border-radius: var(--round);
   background-color: var(--canary); 
+  position: relative; 
 }
 .save_btn:hover {
   cursor: pointer;

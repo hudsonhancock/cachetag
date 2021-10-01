@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
+    "start": "nodemon server.js",
+    "watch": "nodemon server.js",
     "seed": "node seeds/index.js"
   },
   "keywords": [],
@@ -24,6 +25,7 @@
   "devDependencies": {
     "eslint": "^7.12.1",
     "eslint-config-prettier": "^6.15.0",
-    "prettier": "^2.1.2"
+    "prettier": "^2.1.2",
+    "nodemon": "^2.0.12"
   }
 }
