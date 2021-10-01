@@ -23,10 +23,10 @@ router.get('/', async (req, res) => {
   }
 });
 
-//displays the 
-router.get('/', async (req, res) => {
+//displays the add a Hashtag Page
+router.get('/addHashtag', async (req, res) => {
   try {
-    res.render('homepage'); 
+    res.render('addHashtag'); 
   } catch (err) {
     res.status(500).json(err);
   }
