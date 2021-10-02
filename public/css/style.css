@@ -17,6 +17,9 @@
   background-color: var(--salmon);
   color: white; 
 }
+nav {
+  height: 80px;
+}
 .custom_nav li:hover {
   background-color: var(--pink);
 }
