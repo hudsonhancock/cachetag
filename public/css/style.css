@@ -2,34 +2,14 @@
   --ocean: #05ab81; 
   --lime: #B4A725; 
   --canary: #F6A421;
+  --golden: #f9b548;
   --salmon: #FC4F50;
-  --dark: #dc4646;
+  --pink: #fa7171;
   --round: 25px; 
 }
 * {
   font-size: 16px;
   font-family: 'Montserrat', sans-serif;
-}
-header, .project:not(:last-child) {
-  border-bottom: 1px solid #ccc;
-}
-.no-button {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  color: #1b89bc;
-  text-decoration: none;
-  font-size: 100%;
-}
-.no-button:hover {
-  color: #065b83;
-  text-decoration: underline;
-}
-.dollar-amount {
-  color: #056605;
-  font-weight: bold;
-  margin-left: -5px;
 }
 
 /* Nav Bar */
@@ -37,8 +17,11 @@ header, .project:not(:last-child) {
   background-color: var(--salmon);
   color: white; 
 }
+nav {
+  height: 80px;
+}
 .custom_nav li:hover {
-  background-color: var(--dark);
+  background-color: var(--pink);
 }
 
 /* Page Containers */
@@ -49,17 +32,20 @@ header, .project:not(:last-child) {
   padding: var(--round); 
   color: white; 
   margin-top: 50px;
+  box-shadow: 3px 3px 8px grey;
 }
 .page_header {
   background-color: var(--canary);
   text-align: center;
   border: 3px solid white; 
   border-radius: var(--round);
-  
+  padding: 10px; 
 }
 .sub_container {
   background-color: var(--salmon);
   border-radius: var(--round);
+  border: 2px solid white; 
+  padding: var(--round); 
 }
 .custom_btn {
   background-color: var(--salmon);
@@ -67,12 +53,19 @@ header, .project:not(:last-child) {
   border-radius: var(--round);
 }
 .custom_btn:hover {
-  background-color: var(--dark);
+  background-color: var(--pink);
+}
+.flex_row {
+  display: flex; 
+  justify-content: space-between;
+  align-items: center;
 }
 .flex {
   display: flex; 
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  flex-direction: row;
 }
 
 /* Login Page  */
@@ -80,6 +73,31 @@ header, .project:not(:last-child) {
   display: block; 
   margin: 0 auto; 
 }
-.save_icon:hover {
+
+/* What's Trending Page */
+.save_btn {
+  border-radius: var(--round);
+  background-color: var(--canary); 
+  position: relative; 
+}
+.save_btn:hover {
   cursor: pointer;
+  background-color: var(--golden);
+}
+
+/* Profile Page */
+.niche_btn {
+  border: 2px solid white; 
+  border-radius: var(--round);
+  height: 150px; 
+  width: 150px; 
+  margin: 25px; 
+  color: white; 
+}
+.niche_btn:hover {
+  cursor: pointer;
+}
+.overflow {
+  overflow-y: scroll;
+  max-height: 500px;
 }

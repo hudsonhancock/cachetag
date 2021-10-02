@@ -83,6 +83,42 @@ router.get("/", async (req, res) => {
 	} catch (err) {
 		res.status(500).json(err);
 	}
+
+//displays the add a Hashtag Page
+router.get('/addHashtag', async (req, res) => {
+  try {
+    res.render('addHashtag'); 
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+//displays the add a Niche Page
+router.get('/addNiche', async (req, res) => {
+  try {
+    res.render('addNiche'); 
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+//displays the User's Profile Page
+router.get('/profile', async (req, res) => {
+  try {
+    res.render('profile'); 
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+//displays the Register Page
+router.get('/register', async (req, res) => {
+  try {
+    res.render('register'); 
+  } catch (err) {
+    res.status(500).json(err);
+  }
+
 });
 
 router.get("/project/:id", async (req, res) => {
