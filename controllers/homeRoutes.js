@@ -9,60 +9,93 @@ router.get('/', async (req, res) => {
  
 
 // + Keyword that will be used to find tags that are included on posts with the tag you set as keyword 
-let keyWord = "Health & Fitness";
+// let keyWord = "Health & Fitness";
 
 // + The instagram URL to scrape hashtags from with Regex
 // let URL = `https://www.instagram.com/explore/tags/${keyWord}/`
 
+
+// + The AJAX URL of the hashtag source that we use to gather related hashtags
+// let URL = `https://www.tagsfinder.com/en-us/ajax/?hashtag=${keyWord}&limit=10&country=us&custom=&type=live`
+
 // + Array holding hardcoded version of the top tags for the main page to display when a user visits our website
 const topHashtags = ["Health", "Fitness", "Beauty", "Fashion", "Lifestyle", "Business", "Animals", "Food", "Traveling", "Parenting", "DIY"];
 
-// + The AJAX URL of the hashtag source that we use to gather related hashtags
-let URL = `https://www.tagsfinder.com/en-us/ajax/?hashtag=${keyWord}&limit=10&country=us&custom=&type=live`
+// for(i = 0; i < topHashtags.length; i++){
+//   let tagsObj = {
+//     keyword: topHashtags[i],
+//     tags : []
+//   }
 
-// + Uses request-promise to fetch the HTML from the instagram website
-rp(URL)
-    .then((html) => {
+topHashtags.forEach(keyword => {  
+  let arrOfObjects = [];
+  let tagsObj = {
+    keyword: keyword,
+    tags : []
+  }
+  console.log(tagsObj)
+  let currentTags = getTags(keyword);
+  console.log(currentTags)
 
-        // + Call the scrapeHashtags function, passing in the HTML we just scraped. scrapeHashtags(html) will find all of the hashtags on the instagram page, then add them to a matches array and return that
-        let hashtags = scrapeHashtags(html);
+  for(i = 0; i < currentTags.length; i++){
+  tagsObj.tags.push(currentTags[i]);
+  console.log(currentTags);
+  }
+  arrOfObjects.push(tagsObj);
+  console.log(tagsObj)
+  console.log(arrayOfKeywords);
+}
+)
 
-        // + Remove all of the duplicates from the scraped hashtags returned from scrapeHashtags(html)
-        hashtags = removeDuplicates(hashtags);
-        hashtags = hashtags.map(ele => "#" + ele);
-        // let regExVar = new RegExp(keyWord);
-        // filteredTags = hashtags.filter(str => str.match(keyWord));
-        console.log(hashtags);
-        return hashtags;
+const getTags = (keyword) => {
+  let URL = `https://www.tagsfinder.com/en-us/ajax/?hashtag=${keyword}&limit=10&country=us&custom=&type=live`
+  rp(URL)
+      .then((html) => {
+  
+          // + Call the scrapeHashtags function, passing in the HTML we just scraped. scrapeHashtags(html) will find all of the hashtags on the instagram page, then add them to a matches array and return that
+          let hashtags = scrapeHashtags(html);
+  
+          // + Remove all of the duplicates from the scraped hashtags returned from scrapeHashtags(html)
+          hashtags = removeDuplicates(hashtags);
+          hashtags = hashtags.map(ele => "#" + ele);
+          // let regExVar = new RegExp(keyWord);
+          // filteredTags = hashtags.filter(str => str.match(keyWord));
+          // console.log(hashtags);
+          return hashtags;
+        })
+      .catch((err) => {
+          console.log(err);
+      });
+   
+  // + Call the scrapeHashtags function to find all of the hashtags on the instagram website. 
+  const scrapeHashtags = (html) => {  
+      var regex = /(?:^|\s)(?:#)([a-zA-Z\d]+)/gm;
+      var matches = [];
+      var match;
+   
+      while ((match = regex.exec(html))) {
+          matches.push(match[1]);
+      }
+   
+      return matches;
+  }
+   
+  const removeDuplicates = (arr) => {
+      let newArr = [];
+   
+      arr.map(ele => {
+          if (newArr.indexOf(ele) == -1){
+              newArr.push(ele)
+          }
       })
-    .catch((err) => {
-        console.log(err);
-    });
- 
-// + Call the scrapeHashtags function to find all of the hashtags on the instagram website. 
-const scrapeHashtags = (html) => {  
-    var regex = /(?:^|\s)(?:#)([a-zA-Z\d]+)/gm;
-    var matches = [];
-    var match;
- 
-    while ((match = regex.exec(html))) {
-        matches.push(match[1]);
-    }
- 
-    return matches;
-}
- 
-const removeDuplicates = (arr) => {
-    let newArr = [];
- 
-    arr.map(ele => {
-        if (newArr.indexOf(ele) == -1){
-            newArr.push(ele)
-        }
-    })
-     
-    return newArr;
-}
+       
+      return newArr;
+  }
+  }
+
+  let arrayOfKeywords = [];
+// + Uses request-promise to fetch the HTML from the instagram website
+
     // Get all projects and JOIN with user data
     // const projectData = await Project.findAll({
     //   include: [
