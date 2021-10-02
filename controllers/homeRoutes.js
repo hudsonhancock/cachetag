@@ -84,6 +84,9 @@ router.get("/", async (req, res) => {
 		res.status(500).json(err);
 	}
 
+}
+)
+
 //displays the add a Hashtag Page
 router.get('/addHashtag', async (req, res) => {
   try {
