@@ -42,13 +42,13 @@ router.get('/addNiche', async (req, res) => {
 });
 
 //displays the User's Profile Page
-router.get('/profile', async (req, res) => {
+/*router.get('/profile', async (req, res) => {
   try {
     res.render('profile'); 
   } catch (err) {
     res.status(500).json(err);
   }
-});
+});*/
 
 //displays the Register Page
 router.get('/register', async (req, res) => {
@@ -87,10 +87,10 @@ router.get('/project/:id', async (req, res) => {
 router.get('/profile', withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
-    // const userData = await User.findByPk(req.session.user_id, {
+    const userData = await User.findByPk(req.session.user_id, {
     //   attributes: { exclude: ['password'] },
     //   include: [{ model: Project }],
-    // });
+     });
 
     const user = userData.get({ plain: true });
 
