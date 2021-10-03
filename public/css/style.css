@@ -6,6 +6,7 @@
   --salmon: #FC4F50;
   --pink: #fa7171;
   --round: 25px; 
+  --light: #fff;
 }
 * {
   font-size: 16px;
@@ -40,6 +41,7 @@ nav {
   border: 3px solid white; 
   border-radius: var(--round);
   padding: 10px; 
+  caret-color: transparent;
 }
 .sub_container {
   background-color: var(--salmon);
@@ -100,4 +102,9 @@ nav {
 .overflow {
   overflow-y: scroll;
   max-height: 500px;
+}
+
+/* Add Niche */
+#label_text {
+  color: var(--light);
 }
