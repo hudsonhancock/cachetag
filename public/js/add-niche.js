@@ -5,7 +5,7 @@ const postNiche = async (event) => {
 
   if (newNicheValue) {
     // Send a POST request to the API endpoint!
-    const response = await fetch(`/api/niches/new`, {
+    const response = await fetch(`/api/niches`, {
       method: "POST",
       body: JSON.stringify({ newNicheValue }),
       headers: {
@@ -19,16 +19,28 @@ const postNiche = async (event) => {
       alert(response.statusText);
     }
   }
-  alert(newNiche.value);
 };
 
-const deleteNiche = () => {
-  alert("this works too");
+const deleteNiche = async (event) => {
+  if (event.target.hasAttribute('data-id')) {
+    const id = event.target.getAttribute('data-id');
+
+    const response = await fetch(`/api/niches/${id}`, {
+      method: 'DELETE',
+    });
+
+    if (response.ok) {
+      document.location.replace('/profile');
+    } else {
+      alert('Failed to delete niche');
+    }
+  }
 };
 
-const saveNicheBtn = document.querySelector("#save_niche");
-const deleteNicheBtn = document.querySelector("#delete_niche");
-const newNiche = document.querySelector("#new_niche");
+document
+  .querySelector('.add_niche_form')
+  .addEventListener('submit', postNiche);
 
-saveNicheBtn.addEventListener("click", postNiche);
-deleteNicheBtn.addEventListener("click", deleteNiche);
+document
+  .querySelector('.add_niche_form')
+  .addEventListener('click', deleteNiche);
