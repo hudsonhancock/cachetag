@@ -3,7 +3,7 @@ const { Niche } = require('../models');
 const rp = require("request-promise");
 
 // + Array holding hardcoded version of the top tags for the main page to display when a user visits our website
-const topHashtags = [
+const topNiches = [
   "Health",
   "Fitness",
   "Beauty",
@@ -19,55 +19,65 @@ const topHashtags = [
 var hashtagObjs =[];
 
 
-//Adds niches to the Niche's database 
+//this gets the hashtags related to the topNiches above  
+// router.get('/', async (req, res) => {
+//   try {
+//     const scrapeHashtags = (html) => {
+//       var regex = /(?:^|\s)(?:#)([a-zA-Z\d]+)/gm;
+//       var matches = [];
+//       var match;
+//       while ((match = regex.exec(html))) {
+//         matches.push(match[1]);
+//       }
+//       return matches;
+//     };
+//     const removeDuplicates = (arr) => {
+//       let newArr = [];
+
+//       arr.map((ele) => {
+//         if (newArr.indexOf(ele) == -1) {
+//           newArr.push(ele);
+//         }
+//       });
+//       return newArr;
+//     };
+
+// for(i = 0; i < topNiches.length; i++){
+//   let niche = topNiches[i];
+//   let URL = `https://www.tagsfinder.com/en-us/ajax/?hashtag=${niche}&limit=10&country=us&custom=&type=live`;
+//   rp(URL)
+//     .then((html) => {
+//       // + Call the scrapeHashtags function, passing in the HTML we just scraped. scrapeHashtags(html) will find all of the hashtags on the instagram page, then add them to a matches array and return that
+//       let hashtags = scrapeHashtags(html);
+//       let categoryObj = {
+//         niche,
+//         hashtags: []
+//       }
+//       // + Remove all of the duplicates from the scraped hashtags returned from scrapeHashtags(html)
+//       hashtags = removeDuplicates(hashtags);
+//       hashtags = hashtags.map((ele) => "#" + ele);
+
+//       categoryObj.hashtags = hashtags;
+//       hashtagObjs.push(categoryObj);
+//       return hashtagObjs;
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+//   }
+//   console.log(hashtagObjs); 
+//   return hashtagObjs; 
+//   } catch (err) {
+//     res.status(400).json(err);
+//   }
+// });
+
+
 router.post('/', async (req, res) => {
   try {
-    const scrapeHashtags = (html) => {
-      var regex = /(?:^|\s)(?:#)([a-zA-Z\d]+)/gm;
-      var matches = [];
-      var match;
-      while ((match = regex.exec(html))) {
-        matches.push(match[1]);
-      }
-      return matches;
-    };
-    const removeDuplicates = (arr) => {
-      let newArr = [];
-
-      arr.map((ele) => {
-        if (newArr.indexOf(ele) == -1) {
-          newArr.push(ele);
-        }
-      });
-      return newArr;
-    };
-
-for(i = 0; i < topHashtags.length; i++){
-  let niche = topHashtags[i];
-  let URL = `https://www.tagsfinder.com/en-us/ajax/?hashtag=${niche}&limit=10&country=us&custom=&type=live`;
-  rp(URL)
-    .then((html) => {
-      // + Call the scrapeHashtags function, passing in the HTML we just scraped. scrapeHashtags(html) will find all of the hashtags on the instagram page, then add them to a matches array and return that
-      let hashtags = scrapeHashtags(html);
-      let categoryObj = {
-        niche,
-        hashtags: []
-      }
-      // + Remove all of the duplicates from the scraped hashtags returned from scrapeHashtags(html)
-      hashtags = removeDuplicates(hashtags);
-      hashtags = hashtags.map((ele) => "#" + ele);
-
-      categoryObj.hashtags = hashtags;
-      hashtagObjs.push(categoryObj);
-      return hashtagObjs;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  }
-  //creates a newNiche in the database using the data we got back from the API
+    
     const newNiche = await Niche.create({
-      ...res.hashtagObjs.niche,
+      ...req.body,
       // user_id: req.session.user_id,
     });
 
