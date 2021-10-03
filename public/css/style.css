@@ -6,6 +6,7 @@
   --salmon: #FC4F50;
   --pink: #fa7171;
   --round: 25px; 
+  --light: #fff;
 }
 * {
   font-size: 16px;
@@ -101,4 +102,9 @@ nav {
 .overflow {
   overflow-y: scroll;
   max-height: 500px;
+}
+
+/* Add Niche */
+#label_text {
+  color: var(--light);
 }
