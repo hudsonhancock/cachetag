@@ -11,6 +11,7 @@ router.get("/", async (req, res) => {
   }
 })
 
+// this will create a new user
 router.post('/', async (req, res) => {
   try {
     const userData = await User.create(req.body);
@@ -26,6 +27,7 @@ router.post('/', async (req, res) => {
   }
 });
 
+// this will handle the login, and comes from the /public/js/login.js. The route here is /api/users/login
 router.post('/login', async (req, res) => {
   try {
     const userData = await User.findOne({ where: { email: req.body.email } });
@@ -33,7 +35,7 @@ router.post('/login', async (req, res) => {
     if (!userData) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
+        .json({ message: `Incorrect email or password, please try again` });
       return;
     }
 
@@ -42,7 +44,7 @@ router.post('/login', async (req, res) => {
     if (!validPassword) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
+        .json({ message: `Incorrect email or password, please try again` });
       return;
     }
 

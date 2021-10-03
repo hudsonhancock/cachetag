@@ -39,6 +39,11 @@ const userData = [
   },
 ];
 
-const seedUsers = () => User.bulkCreate(userData);
+const seedUsers = () => User.bulkCreate(userData, {individualHooks: true});
+/* individualHooks must be set to true inside bulkCreate
+  This is because bulkCreate inserts directly into a table, and ignores the hooks that are in the model
+  This is a problem here, because bcrypt requires that the passwords be hashed.
+  If the individualHooks were not set, then the passwords would be inserted directly into the table and the bcrypt 
+  method that compares the password in a table with the password that was entered by a User, would fail*/
 
 module.exports = seedUsers;
