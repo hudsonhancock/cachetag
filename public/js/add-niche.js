@@ -1,27 +1,26 @@
-const postNiche = async (event) => {
+const newNicheHandler = async (event) => {
   event.preventDefault();
 
-  const newNicheValue = document.querySelector("#new_niche").value.trim();
-
-  if (newNicheValue) {
-    // Send a POST request to the API endpoint!
+  const niche_name = document.querySelector('#new_niche').value.trim();
+  
+  if (niche_name) {
     const response = await fetch(`/api/niches`, {
-      method: "POST",
-      body: JSON.stringify({ newNicheValue }),
+      method: 'POST',
+      body: JSON.stringify({ niche_name }),
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     });
 
     if (response.ok) {
-      document.location.replace("/profile");
+      document.location.replace('/profile');
     } else {
-      alert(response.statusText);
+      alert('Failed to create niche');
     }
   }
 };
 
-const deleteNiche = async (event) => {
+const delButtonHandler = async (event) => {
   if (event.target.hasAttribute('data-id')) {
     const id = event.target.getAttribute('data-id');
 
@@ -39,8 +38,8 @@ const deleteNiche = async (event) => {
 
 document
   .querySelector('.add_niche_form')
-  .addEventListener('submit', postNiche);
+  .addEventListener('submit', newNicheHandler);
 
 document
-  .querySelector('.add_niche_form')
-  .addEventListener('click', deleteNiche);
+  .querySelector('#delete_niche')
+  .addEventListener('click', delButtonHandler);

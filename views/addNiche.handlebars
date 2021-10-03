@@ -4,11 +4,10 @@
     <div class="input-field col s12 flex_row">
         <input type="text" id="new_niche" placeholder="Insert new niche!">
       <button
-        id="save_niche" type="submit"
-        class="btn save_btn"
-      ><i class="material-icons save_icon">save</i></button>
+        id="save_niche" type="submit" class="btn save_btn"><i class="material-icons save_icon">save</i></button>
     </div>
   </div>
+</form>
   <div class="sub_container">
     <p class="center">Your Saved Niches:</p>
     {{#each niches as |niche|}}
@@ -20,6 +19,5 @@
     </div>
     {{/each}}
   </div>
-</form>
 
   <script src="/js/add-niche.js"></script>
