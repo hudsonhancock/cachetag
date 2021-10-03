@@ -47,6 +47,9 @@ nav {
   border: 2px solid white; 
   padding: var(--round); 
 }
+.sub_container p {
+  margin: 25px; 
+}
 .custom_btn {
   background-color: var(--salmon);
   color:white; 
