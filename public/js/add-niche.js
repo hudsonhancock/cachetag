@@ -13,7 +13,7 @@ const newNicheHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace('/profile');
+      document.location.replace('/addNiche');
     } else {
       alert('Failed to create niche');
     }
@@ -29,7 +29,7 @@ const delButtonHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace('/profile');
+      document.location.replace('/addNiche');
     } else {
       alert('Failed to delete niche');
     }
@@ -41,5 +41,5 @@ document
   .addEventListener('submit', newNicheHandler);
 
 document
-  .querySelector('#delete_niche')
+  .querySelector('.add_niche_form')
   .addEventListener('click', delButtonHandler);
