@@ -18,7 +18,7 @@ Niche.init(
         niche_name: {
             type: DataTypes.STRING,
             allowNull: false,
-        }
+        },
     },
     {
         sequelize,
