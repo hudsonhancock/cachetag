@@ -7,17 +7,17 @@ const withAuth = require("../../utils/auth");
 router.get('/', withAuth, async (req, res) => {
     try {
       // Find the logged in user based on the session ID
-      const userData = await User.findByPk(req.session.user_id, {
+      const userData = await User.findByPk(req.session.user_id);
       //   this tells the findByPk query to NOT pull the password, which could be a security concern
-        attributes: { exclude: ['password'] },
+        //attributes: { exclude: ['password'] },
         // this include could be used to attach the Collection row that's associated with this user and help to pass it to the handlebars page
         //   include: [{ model: Collection }],
-       });
+       
   
       const user = userData.get({ plain: true });
-  
-      res.render('profile', {
-         ...user,
+
+      res.render("profile", {
+         username: userData.username,
          logged_in: true
        }
       );
