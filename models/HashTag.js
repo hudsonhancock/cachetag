@@ -17,11 +17,11 @@ HashTag.init(
         text: {
             type: DataTypes.STRING,
             allowNull: false
-        },
-        popularity: {
-            type: DataTypes.INTEGER,
-            allowNull: true
         }
+        // popularity: {
+        //     type: DataTypes.INTEGER,
+        //     allowNull: true
+        // }
     },
     {
         sequelize,
