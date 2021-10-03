@@ -23,20 +23,20 @@
       <li><a href="/profile">Profile</a></li>
       <li><a href="/addNiche">Add A Niche</a></li>
       <li><a href="/addHashtag">Add A Hashtag</a></li>
-      <li><button class="no-button" id="logout" href="">Logout</button></li>
+      <li><a class="no-button" id="logout" href="/login">Logout</a></li>
       {{!-- {{else}} --}}
       <li><a href="/login">Login</a></li>
     </ul>
     <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>  
-    
-    <div class="nav-wrapper custom_nav">
+
+    <div class="custom_nav">
       <a href="/" class="brand-logo"><img src="/assets/cache_tag_logo.png" width="150px"></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         {{!-- {{#if logged_in}} --}}
         <li><a href="/profile">Profile</a></li>
         <li><a href="/addNiche">Add A Niche</a></li>
         <li><a href="/addHashtag">Add A Hashtag</a></li>
-        <li><button class="no-button" id="logout" href="">Logout</button></li>
+        <li><a href="/login" id="logout">Logout</a></li>
         {{!-- {{else}} --}}
         <li><a href="/login">Login</a></li>
       </ul>
