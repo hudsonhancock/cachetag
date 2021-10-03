@@ -40,6 +40,7 @@ nav {
   border: 3px solid white; 
   border-radius: var(--round);
   padding: 10px; 
+  caret-color: transparent;
 }
 .sub_container {
   background-color: var(--salmon);
