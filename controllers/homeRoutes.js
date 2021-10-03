@@ -1,7 +1,33 @@
 const router = require("express").Router();
 const { Niche } = require('../models');
+const request = require("request");
+const cheerio = require("cheerio")
 // const rp = require("request-promise");
 
+function topTags() {
+	request(
+		{
+			method: "GET",
+			url: "https://top-hashtags.com/instagram/",
+		},
+		(err, res, body) => {
+			if (err) return console.error(err);
+	
+			let $ = cheerio.load(body);
+	
+			let h1El = $(".i-tag");
+			// Takes the string that is all of the words with their hashtags all as one string and makes it an array of words
+			let wordsArray = h1El.text().split("#");
+			// Takes out all of the empty strings from the array
+			let noEmpties = wordsArray.filter((e) => e);
+			// Adds the hashtag symbol back to all of the words in the array
+			var topHashtags = (noEmpties = noEmpties.map((i) => "#" + i));
+			// console.log(topHashtags);
+			console.log(topHashtags);
+			return topHashtags;
+		}
+	)
+	}
 
 //LUKE'S AMAZING CODE!!! DO NOT TOUCH!! 
 
@@ -79,7 +105,7 @@ const { Niche } = require('../models');
 router.get("/", async (req, res) => {
   try {
     const nicheData = await Niche.findAll();
-
+	console.log(topTags())
     // Serialize data so the template can read it
     const niches = nicheData.map((niche) => niche.get({ plain: true }));
 
@@ -94,6 +120,6 @@ router.get("/", async (req, res) => {
 	} catch (err) {
 		res.status(500).json(err);
 	}
-}); 
+});
 
 module.exports = router;
