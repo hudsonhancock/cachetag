@@ -11,7 +11,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-//POST route for a new Niche
+//POST route for a new hashtag
 router.post('/', async (req, res) => {
   try {
     const newHashtag = await HashTag.create({
@@ -26,23 +26,24 @@ router.post('/', async (req, res) => {
 });
 
 //DELETE a niche
-// router.delete('/:id', async (req, res) => {
-//   try {
-//     const nicheData = await Niche.destroy({
-//       where: {
-//         niche_id: req.params.id,
-//         // user_id: req.session.user_id,
-//       },
-//     });
+router.delete('/:id', async (req, res) => {
+  try {
+    const hashtagData = await HashTag.destroy({
+      where: {
+        hashtag_id: req.params.id,
+        // user_id: req.session.user_id,
+      },
+    });
 
-//     if (!nicheData) {
-//       res.status(404).json({ message: 'No niche found with this id!' });
-//       return;
-//     }
+    if (!hashtagData) {
+      res.status(404).json({ message: 'No hashtag found with this id!' });
+      return;
+    }
 
-//     res.status(200).json(nicheData);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+    res.status(200).json(hashtagData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
