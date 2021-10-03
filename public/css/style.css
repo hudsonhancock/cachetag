@@ -15,14 +15,12 @@
 
 /* Nav Bar */
 .custom_nav {
-  background-color: var(--salmon);
   color: white; 
+  font-weight: bold;
 }
 nav {
   height: 80px;
-}
-.custom_nav li:hover {
-  background-color: var(--pink);
+  background-color: var(--salmon);
 }
 
 /* Page Containers */
