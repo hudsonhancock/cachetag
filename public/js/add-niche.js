@@ -1,10 +1,10 @@
 const postNiche = async (event) => {
   event.preventDefault();
-  
+
   const newNicheValue = document.querySelector("#new_niche").value.trim();
 
   if (newNicheValue) {
-    // Send a POST request to the API endpoint
+    // Send a POST request to the API endpoint!
     const response = await fetch(`/api/niches/new`, {
       method: "POST",
       body: JSON.stringify({ newNicheValue }),
