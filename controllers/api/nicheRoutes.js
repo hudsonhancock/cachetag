@@ -11,6 +11,15 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/names", async (req, res) => {
+  try {
+    const nicheData = await Niche.findAll();
+    res.status(200).json(nicheData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 //POST route for a new Niche
 router.post('/', async (req, res) => {
   try {

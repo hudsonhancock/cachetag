@@ -7,13 +7,16 @@ const withAuth = require("../../utils/auth");
 router.get('/', withAuth, async (req, res) => {
     try {
       // Find the logged in user based on the session ID
-      const userData = await User.findByPk(req.session.user_id, {
-        include: [
-          {
-            model: Collection,
-            // TODO: Figure out how to get the name of niches to be included 
-          },
-        ]
+      const userData = await Collection.findAll({
+        where: {
+          user_id: req.session.user_id,
+        }
+        // include: [
+        //   {
+        //     model: User,
+        //     // TODO: Figure out how to get the name of niches to be included 
+        //   },
+        // ]
       });
 
       // Serialize data so the template can read it
