@@ -1,29 +1,22 @@
 <h1 class="page_header">Add A Niche</h1>
-<form class="col s12">
+<form class="col s12 add_niche_form">
   <div class="row">
     <div class="input-field col s12 flex_row">
-      <label id="label_text" for="new_niche">Insert new niche!</label>
-      <input type="text" name="newNiche" id="new_niche" />
+        <input type="text" id="new_niche" placeholder="Insert new niche!">
       <button
-        id="save_niche"
-        class="btn save_btn dropdown-trigger"
-        data-target="dropdown1"
-      ><i class="material-icons save_icon">save</i></button>
-      <!-- When User clicks on the save icon, then it shows a dropdown list of the user's saved niches -->
-      <ul id="dropdown1" class="dropdown-content">
-        <li><a href="#!">Option 1</a></li>
-        <li><a href="#!">Option 2</a></li>
-      </ul>
+        id="save_niche" type="submit" class="btn save_btn"><i class="material-icons save_icon">save</i></button>
     </div>
   </div>
   <div class="sub_container">
     <p class="center">Your Saved Niches:</p>
+    {{#each niches as |niche|}}
     <div class="flex_row">
-      <p>Niche Name</p>
-      <button id="delete_niche" class="btn save_btn"><i
+      <p>{{niche_name}}</p>
+      <button id="delete_niche" data-id="{{niche_id}}" class="btn save_btn"><i
           class="material-icons"
         >delete</i></button>
     </div>
+    {{/each}}
   </div>
 </form>
 

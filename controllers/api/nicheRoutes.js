@@ -14,9 +14,8 @@ router.get("/", async (req, res) => {
 //POST route for a new Niche
 router.post('/', async (req, res) => {
   try {
-    
     const newNiche = await Niche.create({
-      ...req.body,
+      ...req.body
       // user_id: req.session.user_id,
     });
 
@@ -27,23 +26,25 @@ router.post('/', async (req, res) => {
 });
 
 //DELETE a niche
-router.delete('/:id', withAuth, async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
-    const projectData = await Project.destroy({
+    const nicheData = await Niche.destroy({
       where: {
-        id: req.params.id,
-        user_id: req.session.user_id,
+        niche_id: req.params.id,
+        // user_id: req.session.user_id,
       },
     });
 
-    if (!projectData) {
-      res.status(404).json({ message: 'No project found with this id!' });
+    if (!nicheData) {
+      res.status(404).json({ message: 'No niche found with this id!' });
       return;
     }
 
-    res.status(200).json(projectData);
+    res.status(200).json(nicheData);
   } catch (err) {
     res.status(500).json(err);
   }
 });
+
+
 module.exports = router;
