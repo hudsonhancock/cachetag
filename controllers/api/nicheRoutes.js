@@ -26,25 +26,25 @@ router.post('/', async (req, res) => {
 });
 
 //DELETE a niche
-// router.delete('/:id', async (req, res) => {
-//   try {
-//     const nicheData = await Niche.destroy({
-//       where: {
-//         id: req.params.id,
-//         // user_id: req.session.user_id,
-//       },
-//     });
+router.delete('/:id', async (req, res) => {
+  try {
+    const nicheData = await Niche.destroy({
+      where: {
+        niche_id: req.params.id,
+        // user_id: req.session.user_id,
+      },
+    });
 
-//     if (!nicheData) {
-//       res.status(404).json({ message: 'No niche found with this id!' });
-//       return;
-//     }
+    if (!nicheData) {
+      res.status(404).json({ message: 'No niche found with this id!' });
+      return;
+    }
 
-//     res.status(200).json(nicheData);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+    res.status(200).json(nicheData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 
 module.exports = router;
