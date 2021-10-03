@@ -1,22 +1,25 @@
 const router = require("express").Router();
 const { Niche } = require('../models');
-const rp = require("request-promise");
+// const rp = require("request-promise");
+
+
+//LUKE'S AMAZING CODE!!! DO NOT TOUCH!! 
 
 // + Array holding hardcoded version of the top tags for the main page to display when a user visits our website
-const topNiches = [
-  "Health",
-  "Fitness",
-  "Beauty",
-  "Fashion",
-  "Lifestyle",
-  "Business",
-  "Animals",
-  "Food",
-  "Traveling",
-  "Parenting",
-  "DIY",
-];
-var hashtagObjs =[];
+// const topNiches = [
+//   "Health",
+//   "Fitness",
+//   "Beauty",
+//   "Fashion",
+//   "Lifestyle",
+//   "Business",
+//   "Animals",
+//   "Food",
+//   "Traveling",
+//   "Parenting",
+//   "DIY",
+// ];
+// var hashtagObjs =[];
 
 
 //this gets the hashtags related to the topNiches above  
@@ -72,22 +75,7 @@ var hashtagObjs =[];
 //   }
 // });
 
-
-router.post('/', async (req, res) => {
-  try {
-    
-    const newNiche = await Niche.create({
-      ...req.body,
-      // user_id: req.session.user_id,
-    });
-
-    res.status(200).json(newNiche);
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
-
-//This gets the most popular niches along with related hashtags from API
+//This displays the niches in the niches database
 router.get("/", async (req, res) => {
   try {
     const nicheData = await Niche.findAll();
