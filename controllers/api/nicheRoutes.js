@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Niche } = require('../../models');
+const withAuth = require('../../utils/withAuth');
 
 // route to test the connections by querying the niche table
 router.get("/", async (req, res) => {
