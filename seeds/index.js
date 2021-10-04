@@ -1,6 +1,7 @@
 const seedNiches = require('./niche-seeds');
 const seedUsers = require('./user-seeds');
 const seedHashTags = require('./hashtag-seeds');
+const seedCollections = require("./collection-seeds");
 //const seedProductTags = require('./product-tag-seeds');
 
 const sequelize = require('../config/connection');
@@ -17,6 +18,9 @@ const seedAll = async () => {
 
   await seedHashTags();
   console.log('\n----- HASHTAGS SEEDED -----\n');
+
+  await seedCollections();
+  console.log("\n----- COLLECTIONS SEEDED -----\n");
 
   //await seedProductTags();
  // console.log('\n----- PRODUCT TAGS SEEDED -----\n');

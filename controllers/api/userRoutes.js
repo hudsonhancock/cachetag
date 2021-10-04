@@ -11,6 +11,16 @@ router.get("/", async (req, res) => {
   }
 })
 
+// this route is to return a single user's data from the user table, and uses the user_id of the session
+router.get("/currentUser", async (req, res) => {
+  try {
+    const userData = await User.findByPk(req.session.user_id);
+    res.status(200).json(userData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+})
+
 // this will create a new user
 router.post('/', async (req, res) => {
   try {
