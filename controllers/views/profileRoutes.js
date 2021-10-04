@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User } = require("../../models");
+const { User, Niche, Collection } = require("../../models");
 // this brings in the auth helper function, that confirms if the user is logged in
 const withAuth = require("../../utils/auth");
 
@@ -7,23 +7,30 @@ const withAuth = require("../../utils/auth");
 router.get('/', withAuth, async (req, res) => {
     try {
       // Find the logged in user based on the session ID
-      const userData = await User.findByPk(req.session.user_id);
-      //   this tells the findByPk query to NOT pull the password, which could be a security concern
-        //attributes: { exclude: ['password'] },
-        // this include could be used to attach the Collection row that's associated with this user and help to pass it to the handlebars page
-        //   include: [{ model: Collection }],
-       
-  
+      const userData = await Collection.findAll({
+        where: {
+          user_id: req.session.user_id,
+        }
+        // include: [
+        //   {
+        //     model: User,
+        //     // TODO: Figure out how to get the name of niches to be included 
+        //   },
+        // ]
+      });
+
+      // Serialize data so the template can read it
+      // const niches = nicheData.map((niche) => niche.get({ plain: true }));
       const user = userData.get({ plain: true });
 
       res.render("profile", {
-         username: userData.username,
-         logged_in: true
+         ...user,
+         logged_in: true, 
        }
       );
     } catch (err) {
       res.status(500).json(err);
     }
   });
-
+  
 module.exports = router;

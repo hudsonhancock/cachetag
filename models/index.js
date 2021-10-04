@@ -23,19 +23,20 @@ User.hasMany(Collection, {
     sourceKey: "user_id"
 });
 
-/* Collection has many niches
+/* Collection has many niches */
 Collection.hasMany(Niche, {
+    constraints: false, 
     foreignKey: "niche_id",
     sourceKey: "niche_id",
     unique: false
-});*/
+});
 
 // A niche can be in many Collections
-Niche.hasMany(Collection, {
-    //foreignKey: "niche_id",
-    //sourceKey: "niche_id"
-    // this should add niche_id to Collection
-});
+// Niche.hasMany(Collection, {
+//     foreignKey: "niche_id",
+//     sourceKey: "niche_id"
+//     // this should add niche_id to Collection
+// });
 
 // hashtag_niches is a join table where niche_id can have many hashtags, and a hashtag can have many niches
 Niche.belongsToMany(HashTag, {
