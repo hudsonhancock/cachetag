@@ -7,29 +7,45 @@ const withAuth = require("../../utils/auth");
 router.get('/', withAuth, async (req, res) => {
     try {
       // Find the logged in user based on the session ID
-      const userData = await Collection.findAll({
+      const userData = await User.findByPk(req.session.user_id, {attributes: {exclude: ["password"]}});
+
+/*       const collectionData = await Collection.findAll({
         where: {
           user_id: req.session.user_id,
-        }
-        // include: [
-        //   {
-        //     model: User,
-        //     // TODO: Figure out how to get the name of niches to be included 
-        //   },
-        // ]
+        },
+        /* include: {
+          model: Niche,
+        } 
+      })*/
+
+      const xnicheData = await User.findAll( {
+        where: { user_id: req.session.user_id },
+        attributes: {
+          exclude: ["password"],
+        },
+        include: [{ model: Niche, through: {attributes: []}, }]
       });
+      // serialize the collectionData so that we can work on it
 
-      // Serialize data so the template can read it
-      // const niches = nicheData.map((niche) => niche.get({ plain: true }));
+      const xniche = xnicheData.map((nicheCol) => nicheCol.get({ plain: true }));
+      //console.log("This is xNiche after serialization: " + JSON.stringify(xniche, null, 2));
+
+      const yniche = xniche[0];
+      const niches = yniche.niches;
+
+      console.log("This is yniche: " + JSON.stringify(yniche, null, 2));
+      //console.log("This is niches: " + JSON.stringify(niches, null, 2));
+
       const user = userData.get({ plain: true });
-
+      console.log("This is user: "+ niches);
       res.render("profile", {
          ...user,
+         niches,
          logged_in: true, 
        }
       );
     } catch (err) {
-      res.status(500).json(err);
+      res.status(500).json("Message: Failure inside the profileRoutes.js");
     }
   });
   
