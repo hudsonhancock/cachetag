@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const withAuth = require('../../utils/auth');
 const { Niche, User } = require('../../models');
 
 // route to get the user's niches
