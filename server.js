@@ -30,11 +30,18 @@ app.use(session(sess));
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
+
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+const sessionStates = (req, res, next) => {
+  res.locals.logged_in = req.session.logged_in;
+  next();
+}
 
+app.use(sessionStates);
 
 
 app.use(routes);

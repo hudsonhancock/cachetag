@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
 
   // Serialize data so the template can read it
   const niches = nicheData.map((niche) => niche.get({ plain: true }));
-
+    console.log(res.locals);
   res.render(
     "addNiche",
     { 
