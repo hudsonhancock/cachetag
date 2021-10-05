@@ -9,15 +9,6 @@ router.get('/', withAuth, async (req, res) => {
       // Find the logged in user based on the session ID
       const userData = await User.findByPk(req.session.user_id, {attributes: {exclude: ["password"]}});
 
-/*       const collectionData = await Collection.findAll({
-        where: {
-          user_id: req.session.user_id,
-        },
-        /* include: {
-          model: Niche,
-        } 
-      })*/
-
       const xnicheData = await User.findAll( {
         where: { user_id: req.session.user_id },
         attributes: {

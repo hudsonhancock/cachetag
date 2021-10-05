@@ -24,6 +24,10 @@ const collectionData = [
     {
         user_id: 4,
         niche_id: 5
+    },
+    {
+        user_id: 6,
+        niche_id: 5
     }
 ];
 
