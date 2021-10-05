@@ -52,6 +52,7 @@ router.get("/names", async (req, res) => {
 //TODO: Figure out how to post new niche into user's niches
 router.post('/', async (req, res) => {
   try {
+    console.log(req.body);
     const newNiche = await Niche.create({
       ...req.body,
       user_id: req.session.user_id,
