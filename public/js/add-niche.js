@@ -46,3 +46,7 @@ document
 document
   .querySelector('.add_niche_form')
   .addEventListener('click', delButtonHandler);
+
+const saveBtnEl = document.querySelector('#save_niche');
+saveBtnEl.addEventListener('click', newNicheHandler);
+  
