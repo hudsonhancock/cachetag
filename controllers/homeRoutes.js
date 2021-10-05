@@ -1,7 +1,7 @@
 const router = require("express").Router();
-const { Niche } = require('../models');
+const {Niche} = require("../models");
 const request = require("request");
-const cheerio = require("cheerio")
+const cheerio = require("cheerio");
 // const rp = require("request-promise");
 
 function topTags() {
@@ -12,9 +12,9 @@ function topTags() {
 		},
 		(err, res, body) => {
 			if (err) return console.error(err);
-	
+
 			let $ = cheerio.load(body);
-	
+
 			let h1El = $(".i-tag");
 			// Takes the string that is all of the words with their hashtags all as one string and makes it an array of words
 			let wordsArray = h1El.text().split("#");
@@ -26,10 +26,10 @@ function topTags() {
 			console.log(topHashtags);
 			return topHashtags;
 		}
-	)
-	}
+	);
+}
 
-//LUKE'S AMAZING CODE!!! DO NOT TOUCH!! 
+//LUKE'S AMAZING CODE!!! DO NOT TOUCH!!
 
 // + Array holding hardcoded version of the top tags for the main page to display when a user visits our website
 // const topNiches = [
@@ -47,8 +47,7 @@ function topTags() {
 // ];
 // var hashtagObjs =[];
 
-
-//this gets the hashtags related to the topNiches above  
+//this gets the hashtags related to the topNiches above
 // router.get('/', async (req, res) => {
 //   try {
 //     const scrapeHashtags = (html) => {
@@ -94,8 +93,8 @@ function topTags() {
 //       console.log(err);
 //     });
 //   }
-//   console.log(hashtagObjs); 
-//   return hashtagObjs; 
+//   console.log(hashtagObjs);
+//   return hashtagObjs;
 //   } catch (err) {
 //     res.status(400).json(err);
 //   }
@@ -103,15 +102,14 @@ function topTags() {
 
 //This displays the niches in the niches database
 router.get("/", async (req, res) => {
-  try {
-    const nicheData = await Niche.findAll();
-	console.log(topTags())
-    // Serialize data so the template can read it
-    const niches = nicheData.map((niche) => niche.get({ plain: true }));
+	try {
+		const nicheData = await Niche.findAll();
+		// Serialize data so the template can read it
+		const niches = nicheData.map((niche) => niche.get({plain: true}));
 
-    res.render(
+		res.render(
 			"homepage",
-      { niches }
+			{niches}
 			// , {
 			//   projects,
 			//   logged_in: req.session.logged_in
@@ -120,6 +118,38 @@ router.get("/", async (req, res) => {
 	} catch (err) {
 		res.status(500).json(err);
 	}
+});
+
+router.get("/top-tags", async (req, res) => {
+	try {
+		request(
+			{
+				method: "GET",
+				url: "https://top-hashtags.com/instagram/",
+			},
+			(err, res, body) => {
+				if (err) return console.error(err);
+				let $ = cheerio.load(body);
+				let hashtagEl = $(".i-tag");
+				let wordsArray = hashtagEl.text().split("#");
+				// let noEmpties = wordsArray.filter((e) => e);
+				let noEmpties = wordsArray.filter((element) => element.length < 20 && element.length > 4);
+				topHashtags = noEmpties = noEmpties.map((i) => "#" + i);
+				// console.log(topHashtags);
+				exportedHashtags = wordsArray.filter((e) => e);
+				const hashtagArr = topHashtags.map((text) => {
+					return {
+						text,
+						popularity: 91,
+					};
+				});
+				// console.log(exportedHashtags);
+				return topHashtags;
+			}
+		);
+		console.log(exportedHashtags);
+		res.json(exportedHashtags);
+	} catch {}
 });
 
 module.exports = router;

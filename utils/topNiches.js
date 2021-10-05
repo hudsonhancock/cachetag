@@ -1,7 +1,6 @@
 const cheerio = require("cheerio");
 const request = require("request");
-var exportedHashtags = [];
-let topHashtags = [];
+
 request(
       {
             method: "GET",
