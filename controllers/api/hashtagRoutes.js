@@ -12,6 +12,7 @@ router.get("/", async (req, res) => {
 });
 
 //POST route for a new hashtag
+// TODO: Add a connection to niche's on creation of hashtag
 router.post('/', async (req, res) => {
   try {
     const newHashtag = await HashTag.create({
