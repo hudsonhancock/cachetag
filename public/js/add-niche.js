@@ -1,28 +1,48 @@
-const saveNicheBtn = document.querySelector("#save_niche");
-const deleteNicheBtn = document.querySelector("#delete_niche");
-const newNiche = document.querySelector("#new_niche");
+const newNicheHandler = async (event) => {
+  event.preventDefault();
+  event.stopPropagation();
 
-const postNiche = () => {
-  alert("this works");
-  alert(newNiche.value);
+  const niche_name = document.querySelector('#new_niche').value.trim();
+
+  if (niche_name) {
+    const response = await fetch(`/api/niches`, {
+      method: 'POST',
+      body: JSON.stringify({ niche_name }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (response.ok) {
+      document.location.replace('/addNiche');
+    } else {
+      alert('Failed to create niche');
+    }
+  }
 };
 
-const deleteNiche = () => {
-  alert("this works too");
+const delButtonHandler = async (event) => {
+  event.stopPropagation(); 
+  event.preventDefault(); 
+  if (event.target.hasAttribute('data-id')) {
+    const id = event.target.getAttribute('data-id');
+
+    const response = await fetch(`/api/niches/${id}`, {
+      method: 'DELETE',
+    });
+
+    if (response.ok) {
+      document.location.replace('/addNiche');
+    } else {
+      alert('Failed to delete niche');
+    }
+  }
 };
 
-saveNicheBtn.addEventListener("click", postNiche);
-deleteNicheBtn.addEventListener("click", deleteNiche);
+document
+  .querySelector('.add_niche_form')
+  .addEventListener('submit', newNicheHandler);
 
-// fetch("", {
-//     method: "post",
-//     headers: {
-//       Accept: "application/json",
-//       "Content-Type": "application/json",
-//     },
-
-//     body: JSON.stringify({
-//       name: myName,
-//       password: myPassword,
-//     }),
-//   }).then((response) => {});
+document
+  .querySelector('.add_niche_form')
+  .addEventListener('click', delButtonHandler);

@@ -1,8 +1,8 @@
-<h1 class="page_header">{{username}}</h1>
+<h1 class="page_header">{{niche_name}}</h1>
 <!-- Each Niche that the user has saved will be displayed here. When User clicks on a niche button it will show them the hashtags that are related to that niche -->
 <div class="flex overflow">
-  {{#each niches as |niche|}}
-  <a href="/hashtags"><button class="niche_btn">{{niche.niche_name}}</button></a>
+  {{#each hashtags as |hashtag|}}
+  <button class="niche_btn">{{hashtag.text}}</button>
   {{/each}}
 </div>
 
