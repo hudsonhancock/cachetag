@@ -11,4 +11,16 @@ router.get("/", async (req, res) => {
   }
 });
 
+// route to add a new entry to the hashtag_niche table
+router.post("/", async (req, res) => {
+  try {
+    const collectiontagData = await CollectionTag.create(
+      ...req.body
+    );
+    res.status(200).json(collectiontagData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
