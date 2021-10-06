@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const withAuth = require('../../utils/auth');
-const { Niche, User } = require('../../models');
+const { Niche, User, Collection } = require('../../models');
 
 // route to get the user's niches
 router.get("/", async (req, res) => {
@@ -55,9 +55,15 @@ router.post('/', async (req, res) => {
     console.log(req.body);
     const newNiche = await Niche.create({
       ...req.body,
-      user_id: req.session.user_id,
     });
 
+    const updateCollection = await Collection.create({
+      user_id: req.session.user_id,
+      niche_id: newNiche.niche_id
+    });
+
+    //console.log(newNiche.niche_id);
+    //console.log(updateCollection);
     res.status(200).json(newNiche);
   } catch (err) {
     res.status(400).json(err);
