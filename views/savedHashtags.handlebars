@@ -1,8 +1,48 @@
 <h1 class="page_header">Niche Name</h1>
 <!-- The hashtags below are what the user has saved to that niche -->
-<div class="flex overflow">
-  <button class="niche_btn">#hashtag1</button>
-  <button class="niche_btn">#hashtag2</button>
-  <button class="niche_btn">#hashtag3</button>
-  <button class="niche_btn">#hashtag4</button>
-</div>
+  <div class="sub_container">
+    <div class="flex_row"
+        <p>#hashtag1</p>
+        <button class="btn save_btn dropdown-trigger" data-target='dropdown1'><i class="material-icons save_icon">save</i></button>
+        <!-- When User clicks on the save icon, then it shows a dropdown list of the user's saved niches -->
+        <ul id='dropdown1' class='dropdown-content'>
+          <li><a href="#!">Option 1</a></li>
+          <li><a href="#!">Option 2</a></li>
+        </ul>
+    </div> 
+    <div class="flex_row"
+        <p>#hashtag2</p>
+        <button class="btn save_btn dropdown-trigger" data-target='dropdown1'><i class="material-icons save_icon">save</i></button>
+        <!-- When User clicks on the save icon, then it shows a dropdown list of the user's saved niches -->
+        <ul id='dropdown1' class='dropdown-content'>
+          <li><a href="#!">Option 1</a></li>
+          <li><a href="#!">Option 2</a></li>
+        </ul>
+    </div>
+    <div class="flex_row"
+        <p>#hashtag3</p>
+        <button class="btn save_btn dropdown-trigger" data-target='dropdown1'><i class="material-icons save_icon">save</i></button>
+        <!-- When User clicks on the save icon, then it shows a dropdown list of the user's saved niches -->
+        <ul id='dropdown1' class='dropdown-content'>
+          <li><a href="#!">Option 1</a></li>
+          <li><a href="#!">Option 2</a></li>
+        </ul>
+    </div>
+    <div class="flex_row"
+        <p>#hashtag4</p>
+        <button class="btn save_btn dropdown-trigger" data-target='dropdown1'><i class="material-icons save_icon">save</i></button>
+        <!-- When User clicks on the save icon, then it shows a dropdown list of the user's saved niches -->
+        <ul id='dropdown1' class='dropdown-content'>
+          <li><a href="#!">Option 1</a></li>
+          <li><a href="#!">Option 2</a></li>
+        </ul>
+    </div>
+  </div>
+
+  <!-- Save Options Dropdown -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.dropdown-trigger');
+  var instances = M.Dropdown.init(elems);
+});
+</script>
