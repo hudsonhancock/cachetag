@@ -1,11 +1,3 @@
-// const newNicheHandler = async (event) => {
-//     event.preventDefault();
-//     event.stopPropagation();
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.dropdown-trigger');
-    var instances = M.Dropdown.init(elems);
-  });
-  
   var buttons = document.querySelectorAll(".dropdown-content"); 
   var savebtns = document.querySelectorAll(".saveButtonDiv");  
   
@@ -88,25 +80,35 @@ event.preventDefault();
 if (event.target.hasAttribute('data-id')) {
     const id = event.target.getAttribute('data-id');
 
-    const response = await fetch(`/api/user_hashtag/${id}`, {
-    method: 'DELETE',
-    });
+var niche;
+var hashtag;
 
-    if (response.ok) {
-    document.location.replace('/savedHashtags');
-    } else {
-    alert('Failed to delete niche');
-    }
-}
-};
+var input = document.getElementById("searchInput"); 
+var searchBtn = document.getElementById("searchBtn"); 
 
-// document
-// .querySelector('.add_niche_form')
-// .addEventListener('submit', newNicheHandler);
+//this gets the value of search input, AKA the keyword 
+searchBtn.addEventListener("click", function(event) {
+    event.stopPropagation(); 
+    event.preventDefault(); 
+    console.log(input.value);  
+}); 
+
+//this grabs the hashtag that the user wants to save 
+var getHashtag = (event) => {
+    hashtag = event.target.dataset.hashtag;
+    console.log("This is the hashtag: " + event.target.dataset.hashtag);
+}; 
 
 // document
 // .querySelector('.savedHashtagsPage')
 // .addEventListener('click', delButtonHandler);
 
-// const saveBtnEl = document.querySelector('#save_niche');
-// saveBtnEl.addEventListener('click', newNicheHandler);
+
+buttons.forEach(function(button) {
+  button.addEventListener("click", chooseNiche);
+}); 
+
+savebtns.forEach(function(button) {
+button.addEventListener("click", getHashtag);
+}); 
+  

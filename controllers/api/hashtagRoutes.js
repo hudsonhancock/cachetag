@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { HashTag } = require('../../models');
+const { HashTag, Collection, Niche } = require('../../models');
 
 // route to test the connections by querying the hashtag table
 router.get("/", async (req, res) => {
@@ -11,16 +11,20 @@ router.get("/", async (req, res) => {
   }
 });
 
-//POST route for a new hashtag
+//POST route for a new hashtag, somebody sends a fetch POST request to localhost:3001/api/hashtags/
 // TODO: Add a connection to niche's on creation of hashtag
 router.post('/', async (req, res) => {
   try {
     const newHashtag = await HashTag.create({
-      ...req.body
-      // user_id: req.session.user_id,
+      text: req.body.hashtag
+    });
+    //console.log(req.body.hashtag);
+    const nicheData = await Collection.findOne( {
+      where: { niche_id: req.body.niche_id },
     });
 
-    res.status(200).json(newHashtag);
+    //console.log(nicheData)
+    res.status(200).json({newHashtag, nicheData});
   } catch (err) {
     res.status(400).json(err);
   }
