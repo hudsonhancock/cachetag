@@ -5,8 +5,9 @@
     {{#each hashtagArr as |hashtag| }}
     <div class="flex_row">
       <p class="hashtag_text">{{text}}</p>
-      <button class="btn save_btn dropdown-trigger" id="save_btn" data-target="dropdown1"><i class="material-icons save_icon">save</i></button>
-      
+      <div class="saveButtonDiv" data-hashtag="{{text}}">
+      <button class="btn save_btn dropdown-trigger" id="{{@index}}" data-hashtag="{{text}}" data-target="dropdown1"><i data-hashtag="{{text}}" class="material-icons save_icon">save</i></button>
+      </div>
     </div>  
     {{/each}}
   </div>
@@ -28,20 +29,25 @@
 });
 
 var buttons = document.querySelectorAll(".dropdown-content"); 
-var savebtns = document.querySelectorAll(".save_btn");  
+var savebtns = document.querySelectorAll(".saveButtonDiv");  
+
+var niche;
+var hashtag;
 
 var getHashtag = (event) => {
-  event.stopPropagation(); 
-  if (event.target.id = "save_btn") {
-    console.log("This is the hashtag: " + event.target.parentElement.parentElement.children[0].textContent);
-  } else {
-    console.log("Wrong!"); 
-  }
+
+    hashtag = event.target.dataset.hashtag;
+    console.log("This is the hashtag: " + event.target.dataset.hashtag);
 }; 
+
+
 
 var chooseNiche = (event) => {
   event.stopPropagation(); 
-  console.log("This is the niche name: " + event.target.textContent); 
+  niche = event.target.textContent;
+  console.log("This is the niche name: " + niche + "\nThis is the hashtag: " + hashtag);
+
+  
 }; 
 
 buttons.forEach(function(button) {
