@@ -16,7 +16,7 @@
     {{!-- <ul id='dropdown1' class='dropdown-content'> --}}
         <ul id='dropdown1' class='dropdown-content'>
     {{#each niches as |niche| }}
-        <li><a href="#!">{{ niche_name }}</a></li>
+        <li id={{@index}} ><a class="niche" href="#!">{{ niche_name }}</a></li>
             {{/each}}
         </ul>
  
@@ -26,5 +26,19 @@
   var elems = document.querySelectorAll('.dropdown-trigger');
   var instances = M.Dropdown.init(elems);
 });
+
+var buttons = document.querySelectorAll(".niche"); 
+
+console.log(buttons); 
+
+var buttonHandler = (event) => {
+  event.stopPropagation(); 
+  alert(event.target.textContent);  
+}; 
+
+buttons.forEach(function(button) {
+  button.addEventListener("click", buttonHandler);
+}); 
+
 </script>
 {{!-- <script src="../public/js/saveButton.js"></script> --}}
