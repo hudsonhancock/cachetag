@@ -125,7 +125,8 @@ const cheerio = require("cheerio");
 
 router.get("/", async (req, res) => {
 	try {
-		request(
+		let niches = ["Please login or register to save hashtags"];
+			await request(
 			{
 				method: "GET",
 				url: "https://top-hashtags.com/instagram/",
@@ -166,7 +167,7 @@ router.get("/", async (req, res) => {
 		// }else{
 		// 	console.log(`NO USER_ID FOUND`)
 		// }
-
+ if(req.session.logged_in){
 	const xnicheData = await User.findAll( {
 		where: { user_id: req.session.user_id },
 		attributes: {
@@ -174,30 +175,31 @@ router.get("/", async (req, res) => {
 		},
 		include: [{ model: Niche, through: {attributes: []}, }]
 	    });
+	
 	    // serialize the collectionData so that we can work on it
 	
 	    const xniche = xnicheData.map((nicheCol) => nicheCol.get({ plain: true }));
 	    //console.log("This is xNiche after serialization: " + JSON.stringify(xniche, null, 2));
 	
 	    const yniche = xniche[0];
-	    const niches = yniche.niches;
+	    niches = yniche.niches;
 	
 	    console.log("This is yniche: " + JSON.stringify(yniche, null, 2));
 	    console.log("This is niches: " + JSON.stringify(niches, null, 2));
-		// + ------------------END OF POPULATE DROPDOWN FUNCTIONALITY ------------------------------
-
+	
+}
+res.render(
+	"homepage",
+	{
+		hashtagArr,
+		niches
+	}
+)	    // + ------------------END OF POPULATE DROPDOWN FUNCTIONALITY ------------------------------
 		console.log(niches);
-	res.render(
-			"homepage",
-			{
-				hashtagArr,
-				niches
-			}
 
-		);
 	} catch (err) {
 		res.status(500).json(err);
-		}
+	}
 });
 
 module.exports = router;
