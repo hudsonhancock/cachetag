@@ -195,7 +195,7 @@ res.render(
 		niches
 	}
 )	    // + ------------------END OF POPULATE DROPDOWN FUNCTIONALITY ------------------------------
-		console.log(niches);
+		// console.log(niches);
 
 	} catch (err) {
 		res.status(500).json(err);
