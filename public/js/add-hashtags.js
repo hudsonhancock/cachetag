@@ -1,7 +1,41 @@
 // const newNicheHandler = async (event) => {
 //     event.preventDefault();
 //     event.stopPropagation();
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.dropdown-trigger');
+    var instances = M.Dropdown.init(elems);
+  });
   
+  var buttons = document.querySelectorAll(".dropdown-content"); 
+  var savebtns = document.querySelectorAll(".saveButtonDiv");  
+  
+  var niche;
+  var hashtag;
+  
+  var getHashtag = (event) => {
+  
+      hashtag = event.target.dataset.hashtag;
+      console.log("This is the hashtag: " + event.target.dataset.hashtag);
+  }; 
+  
+  
+  
+  var chooseNiche = (event) => {
+    event.stopPropagation(); 
+    niche = event.target.textContent;
+    console.log("This is the niche name: " + niche + "\nThis is the hashtag: " + hashtag);
+  
+    
+  }; 
+  
+  buttons.forEach(function(button) {
+    button.addEventListener("click", chooseNiche);
+  }); 
+  
+  savebtns.forEach(function(button) {
+  button.addEventListener("click", getHashtag);
+  }); 
+   
 //     const niche_name = document.querySelector('#new_niche').value.trim();
   
 //     if (niche_name) {
