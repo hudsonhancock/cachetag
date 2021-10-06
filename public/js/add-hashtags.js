@@ -1,85 +1,37 @@
-// const newNicheHandler = async (event) => {
-//     event.preventDefault();
-//     event.stopPropagation();
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.dropdown-trigger');
-    var instances = M.Dropdown.init(elems);
-  });
-  
-  var buttons = document.querySelectorAll(".dropdown-content"); 
-  var savebtns = document.querySelectorAll(".saveButtonDiv");  
-  
-  var niche;
-  var hashtag;
-  
-  var getHashtag = (event) => {
-  
-      hashtag = event.target.dataset.hashtag;
-      console.log("This is the hashtag: " + event.target.dataset.hashtag);
-  }; 
-  
-  
-  
-  var chooseNiche = (event) => {
+var buttons = document.querySelectorAll(".dropdown-content"); 
+var savebtns = document.querySelectorAll(".saveButtonDiv");  
+
+var niche;
+var hashtag;
+
+var input = document.getElementById("searchInput"); 
+var searchBtn = document.getElementById("searchBtn"); 
+
+//this gets the value of search input, AKA the keyword 
+searchBtn.addEventListener("click", function(event) {
     event.stopPropagation(); 
-    niche = event.target.textContent;
-    console.log("This is the niche name: " + niche + "\nThis is the hashtag: " + hashtag);
-  
-    
-  }; 
-  
-  buttons.forEach(function(button) {
-    button.addEventListener("click", chooseNiche);
-  }); 
-  
-  savebtns.forEach(function(button) {
-  button.addEventListener("click", getHashtag);
-  }); 
-   
-//     const niche_name = document.querySelector('#new_niche').value.trim();
-  
-//     if (niche_name) {
-//       const response = await fetch(`/api/niches`, {
-//         method: 'POST',
-//         body: JSON.stringify({ niche_name }),
-//         headers: {
-//           'Content-Type': 'application/json',
-//         },
-//       });
-  
-//       if (response.ok) {
-//         document.location.replace('/addNiche');
-//       } else {
-//         alert('Failed to create niche');
-//       }
-//     }
-//   };
-  
-const delButtonHandler = async (event) => {
-event.stopPropagation(); 
-event.preventDefault(); 
-if (event.target.hasAttribute('data-id')) {
-    const id = event.target.getAttribute('data-id');
+    event.preventDefault(); 
+    console.log(input.value);  
+}); 
 
-    const response = await fetch(`/api/user_hashtag/${id}`, {
-    method: 'DELETE',
-    });
+//this grabs the hashtag that the user wants to save 
+var getHashtag = (event) => {
+    hashtag = event.target.dataset.hashtag;
+    console.log("This is the hashtag: " + event.target.dataset.hashtag);
+}; 
 
-    if (response.ok) {
-    document.location.replace('/savedHashtags');
-    } else {
-    alert('Failed to delete niche');
-    }
-}
-};
+//this grabs the niche that the user choices to save to 
+var chooseNiche = (event) => {
+  event.stopPropagation(); 
+  niche = event.target.textContent;
+  console.log("This is the niche name: " + niche + "\nThis is the hashtag: " + hashtag);
+}; 
 
-// document
-// .querySelector('.add_niche_form')
-// .addEventListener('submit', newNicheHandler);
+buttons.forEach(function(button) {
+  button.addEventListener("click", chooseNiche);
+}); 
 
-document
-.querySelector('.savedHashtagsPage')
-.addEventListener('click', delButtonHandler);
-
-// const saveBtnEl = document.querySelector('#save_niche');
-// saveBtnEl.addEventListener('click', newNicheHandler);
+savebtns.forEach(function(button) {
+button.addEventListener("click", getHashtag);
+}); 
+  
