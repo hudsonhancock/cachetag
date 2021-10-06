@@ -5,17 +5,26 @@
     {{#each hashtagArr as |hashtag| }}
     <div class="flex_row"
       <p>{{text}}</p>
-      <button class="btn save_btn"><i class="material-icons save_icon">save</i></button>
+      <button class="btn save_btn dropdown-trigger" data-target="dropdown1"><i class="material-icons save_icon">save</i></button>
+      
     </div>  
     {{/each}}
   </div>
 
-
-{{!-- Drop Down Options Button Code --}}
-{{!-- <button class="btn save_btn dropdown-trigger" data-target='dropdown1'><i class="material-icons save_icon">save</i></button>
+{{!-- <button class="btn save_btn dropdown-trigger" data-target='dropdown1'><i class="material-icons save_icon">save</i></button> --}}
     <!-- When User clicks on the save icon, then it shows a dropdown list of the user's saved niches -->
-    <ul id='dropdown1' class='dropdown-content'>
-      {{#each niches as |niche| }}
-      <li><a href="#!">{{niche_name}}</a></li>
-      {{/each}}
-    </ul> --}}
+    {{!-- <ul id='dropdown1' class='dropdown-content'> --}}
+        <ul id='dropdown1' class='dropdown-content'>
+    {{!-- {{#each niches as |niche| }}
+        <li><a href="#!">{{ niche_name }}</a></li>
+            {{/each}} --}}
+        </ul>
+ 
+    <!-- Save Options Dropdown -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.dropdown-trigger');
+  var instances = M.Dropdown.init(elems);
+});
+</script>
+{{!-- <script src="../public/js/saveButton.js"></script> --}}

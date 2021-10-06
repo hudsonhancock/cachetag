@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const {Niche} = require("../models");
+const {Niche, Collection, User} = require("../models");
 const request = require("request");
 const cheerio = require("cheerio");
 // const rp = require("request-promise");
@@ -143,20 +143,57 @@ router.get("/", async (req, res) => {
 				hashtagArr = exportedHashtags.map((text) => {
 					return {
 						text,
-						// popularity: 91,
 					};
 				});
 				// console.log(hashtagArr); 
 				return hashtagArr;
 			}
 		);
-		console.log(hashtagArr); 
-		// const hashtags = hashtagArr.map((tag) => tag.get({plain: true}));
-		res.render(
+		// console.log(hashtagArr); 
+
+
+		// + ------------ BEGINNING OF FUNCTIONALITY TO POPULATE DROPDOWN MENU -----------------
+		// if(req.session.user_id){
+		// const userCollections = Collection.findAll({
+		// 	attributes: ["user_id"],
+		// 	where: { 
+		// 		user_id: req.session.user_id
+		// 	}
+		// });
+		// if(userCollections){
+		// console.log(userCollections);
+		// // const hashtags = hashtagArr.map((tag) => tag.get({plain: true}));
+		// }else{
+		// 	console.log(`NO USER_ID FOUND`)
+		// }
+
+	const xnicheData = await User.findAll( {
+		where: { user_id: req.session.user_id },
+		attributes: {
+		  exclude: ["password"],
+		},
+		include: [{ model: Niche, through: {attributes: []}, }]
+	    });
+	    // serialize the collectionData so that we can work on it
+	
+	    const xniche = xnicheData.map((nicheCol) => nicheCol.get({ plain: true }));
+	    //console.log("This is xNiche after serialization: " + JSON.stringify(xniche, null, 2));
+	
+	    const yniche = xniche[0];
+	    const niches = yniche.niches;
+	
+	    console.log("This is yniche: " + JSON.stringify(yniche, null, 2));
+	    console.log("This is niches: " + JSON.stringify(niches, null, 2));
+		// + ------------------END OF POPULATE DROPDOWN FUNCTIONALITY ------------------------------
+
+		console.log(niches);
+	res.render(
 			"homepage",
 			{
 				hashtagArr,
+				niches
 			}
+
 		);
 	} catch (err) {
 		res.status(500).json(err);
