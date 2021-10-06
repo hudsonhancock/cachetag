@@ -6,7 +6,7 @@
     <div class="flex_row">
       <p class="hashtag_text">{{text}}</p>
       <div class="saveButtonDiv" data-hashtag="{{text}}">
-      <button class="btn save_btn dropdown-trigger" id="{{@index}}" data-hashtag="{{text}}" data-target="dropdown1"><i data-hashtag="{{text}}" class="material-icons save_icon">save</i></button>
+      <button class="btn save_btn dropdown-trigger" id="{{@index}}" data-hashtag_id="{{id}}" data-hashtag="{{text}}" data-target="dropdown1"><i data-hashtag="{{text}}" class="material-icons save_icon">save</i></button>
       </div>
     </div>  
     {{/each}}
@@ -17,7 +17,7 @@
     {{!-- <ul id='dropdown1' class='dropdown-content'> --}}
         <ul id='dropdown1' class='dropdown-content'>
         {{#each niches as |niche| }}
-        <li id={{@index}} ><a class="niche">{{ niche_name }}</a></li>
+        <li id="{{ niche_id }}"><a class="niche" id="{{ niche_id }}">{{ niche_name }}</a></li>
         {{/each}}
         </ul>
 

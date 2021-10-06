@@ -10,6 +10,7 @@ const collectiontagRoutes = require("./collectiontagRoutes");
 router.use('/users', userRoutes);
 router.use('/niches', nicheRoutes);
 router.use("/hashtags", hashtagRoutes);
-router.use("/user_hashtag", hashtagnicheRoutes); 
+router.use("/user_hashtag", hashtagnicheRoutes);
+router.use("/collectiontags", collectiontagRoutes);
 
 module.exports = router;
