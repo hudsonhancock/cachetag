@@ -1,8 +1,16 @@
-<h1 class="page_header">Niche Name</h1>
+<div class="savedHashtagsPage">
+  <h1 class="page_header">Niche Name</h1>
 <!-- The hashtags below are what the user has saved to that niche -->
-<div class="flex overflow">
-  <button class="niche_btn">#hashtag1</button>
-  <button class="niche_btn">#hashtag2</button>
-  <button class="niche_btn">#hashtag3</button>
-  <button class="niche_btn">#hashtag4</button>
+  <div class="sub_container">
+    {{!-- {{#each hashtags as |hashtag|}} --}}
+    <div class="flex_row"
+        <p>hashtag name</p>
+        <button id="delete_hashtag" data-id="{{hashtag_id}}" class="btn save_btn"><i
+          class="material-icons"
+        >delete</i></button>
+    </div>
+    {{!-- {{/each}}   --}}
+  </div>
 </div>
+
+<script src="/js/add-hashtags.js"></script>

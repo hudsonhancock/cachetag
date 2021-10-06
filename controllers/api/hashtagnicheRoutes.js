@@ -11,4 +11,6 @@ router.get("/", async (req, res) => {
   }
 });
 
+//TODO: delete route to delete a user's hashtags 
+
 module.exports = router;
