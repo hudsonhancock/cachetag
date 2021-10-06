@@ -31,6 +31,7 @@ nav {
   padding: var(--round); 
   color: white; 
   margin-top: 50px;
+  margin-bottom: 50px; 
   box-shadow: 3px 3px 8px grey;
 }
 .page_header {
@@ -69,6 +70,15 @@ nav {
   align-items: center;
   flex-wrap: wrap;
   flex-direction: row;
+}
+.custom_footer {
+  background-color: var(--salmon);
+}
+.creaters {
+  color: white; 
+}
+.creaters:hover {
+  text-decoration: underline;
 }
 
 /* Login Page  */
