@@ -2,9 +2,9 @@
 <h1 class="page_header">What's Hot!</h1>
   <!-- This will display the top 10 trending hashtags -->
   <div class="sub_container">
-    {{#each niches as |niche| }}
+    {{#each hashtagArr as |hashtag| }}
     <div class="flex_row"
-      <p>{{niche_name}}</p>
+      <p>{{text}}</p>
       <button class="btn save_btn"><i class="material-icons save_icon">save</i></button>
     </div>  
     {{/each}}
