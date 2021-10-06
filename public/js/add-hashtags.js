@@ -21,32 +21,31 @@
 //     }
 //   };
   
-// const delButtonHandler = async (event) => {
-// event.stopPropagation(); 
-// event.preventDefault(); 
-// if (event.target.hasAttribute('data-id')) {
-//     const id = event.target.getAttribute('data-id');
+const delButtonHandler = async (event) => {
+event.stopPropagation(); 
+event.preventDefault(); 
+if (event.target.hasAttribute('data-id')) {
+    const id = event.target.getAttribute('data-id');
 
-//     const response = await fetch(`/api/user_hashtag/${id}`, {
-//     method: 'DELETE',
-//     });
+    const response = await fetch(`/api/user_hashtag/${id}`, {
+    method: 'DELETE',
+    });
 
-//     if (response.ok) {
-//     document.location.replace('/savedHashtags');
-//     } else {
-//     alert('Failed to delete niche');
-//     }
-// }
-// };
+    if (response.ok) {
+    document.location.replace('/savedHashtags');
+    } else {
+    alert('Failed to delete niche');
+    }
+}
+};
 
 // document
 // .querySelector('.add_niche_form')
 // .addEventListener('submit', newNicheHandler);
 
 document
-.querySelector('#delete_hashtag')
-.addEventListener('click', alert("You deleted me!")); 
-// delButtonHandler);
+.querySelector('.savedHashtagsPage')
+.addEventListener('click', delButtonHandler);
 
 // const saveBtnEl = document.querySelector('#save_niche');
 // saveBtnEl.addEventListener('click', newNicheHandler);
