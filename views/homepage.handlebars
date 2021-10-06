@@ -3,9 +3,9 @@
   <!-- This will display the top 10 trending hashtags -->
   <div class="sub_container">
     {{#each hashtagArr as |hashtag| }}
-    <div class="flex_row"
-      <p>{{text}}</p>
-      <button class="btn save_btn dropdown-trigger" data-target="dropdown1"><i class="material-icons save_icon">save</i></button>
+    <div class="flex_row">
+      <p class="hashtag_text">{{text}}</p>
+      <button class="btn save_btn dropdown-trigger" id="save_btn" data-target="dropdown1"><i class="material-icons save_icon">save</i></button>
       
     </div>  
     {{/each}}
@@ -15,11 +15,11 @@
     <!-- When User clicks on the save icon, then it shows a dropdown list of the user's saved niches -->
     {{!-- <ul id='dropdown1' class='dropdown-content'> --}}
         <ul id='dropdown1' class='dropdown-content'>
-    {{#each niches as |niche| }}
-        <li id={{@index}} ><a class="niche" href="#!">{{ niche_name }}</a></li>
-            {{/each}}
+        {{#each niches as |niche| }}
+        <li id={{@index}} ><a class="niche">{{ niche_name }}</a></li>
+        {{/each}}
         </ul>
- 
+
     <!-- Save Options Dropdown -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
@@ -27,18 +27,31 @@
   var instances = M.Dropdown.init(elems);
 });
 
-var buttons = document.querySelectorAll(".niche"); 
+var buttons = document.querySelectorAll(".dropdown-content"); 
+var savebtns = document.querySelectorAll(".save_btn");  
 
-console.log(buttons); 
-
-var buttonHandler = (event) => {
+var getHashtag = (event) => {
   event.stopPropagation(); 
-  alert(event.target.textContent);  
+  if (event.target.id = "save_btn") {
+    console.log("This is the hashtag: " + event.target.parentElement.parentElement.children[0].textContent);
+  } else {
+    console.log("Wrong!"); 
+  }
+}; 
+
+var chooseNiche = (event) => {
+  event.stopPropagation(); 
+  console.log("This is the niche name: " + event.target.textContent); 
 }; 
 
 buttons.forEach(function(button) {
-  button.addEventListener("click", buttonHandler);
+  button.addEventListener("click", chooseNiche);
 }); 
+
+savebtns.forEach(function(button) {
+button.addEventListener("click", getHashtag);
+}); 
+ 
 
 </script>
 {{!-- <script src="../public/js/saveButton.js"></script> --}}
