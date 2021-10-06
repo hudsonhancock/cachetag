@@ -51,10 +51,34 @@
       <!-- Render the sub layout -->
       {{{ body }}}
     </main>
-    <footer>
-      
+
+    <footer class="page-footer custom_footer">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">CacheTag</h5>
+            <p class="text-lighten-4">A hashtag generating app where users can choose their niche, get and store tags, and then copy them to a clipboard for use in other websites.</p>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">Creators:</h5>
+            <ul>
+              <li><a class="creaters" href="https://github.com/KatsuMatsushita">Katsunori Matsushita</a></li>
+              <li><a class="creaters" href="https://github.com/hudsonhancock">Hudson Hancock</a></li>
+              <li><a class="creaters" href="https://github.com/lukecp5">Luke Poirrier</a></li>
+              <li><a class="creaters" href="https://github.com/AmandaC0022">Amanda Morgan</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+        © 2021
+        </div>
+      </div>
     </footer>
   </div>
+
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <!-- Render script for logged in users only -->
   {{!-- {{#if logged_in}} --}}
