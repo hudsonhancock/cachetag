@@ -11,6 +11,20 @@ router.get("/", async (req, res) => {
   }
 });
 
-//TODO: delete route to delete a user's hashtags 
+// route to add a new entry to the hashtag_niche table
+router.post("/", async (req, res) => {
+  try {
+    const hashtagnicheData = await HashTagNiche.create(
+      ...req.body
+    );
+    res.status(200).json(hashtagnicheData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+//TODO: delete route to delete a user's hashtags
+// this should be unnecessary as the deletion of a user or hashtag will cascade to this table
+// this is set up in the models
 
 module.exports = router;
