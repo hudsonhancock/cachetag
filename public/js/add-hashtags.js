@@ -59,7 +59,19 @@
             console.log(jsonData);
 
             // + Here we send a post to /api/collectiontags/ endpoint with the hashtag_id and collection_id 
-            
+            const response = fetch(`/api/collectiontags`, {
+              method: 'POST',
+              body: JSON.stringify({ collection_id, hashtag_id }),
+              headers: {
+                'Content-Type': 'application/json',
+              },
+            })
+            .then(response => {
+              return response.json();
+            })
+            .then(jsonData => {
+              console.log(jsonData);
+            })
 
           })
         })
