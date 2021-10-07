@@ -25,7 +25,24 @@ router.post("/", async (req, res) => {
 });
 
 //TODO: delete route to delete a user's hashtags
-// this should be unnecessary as the deletion of a user or hashtag will cascade to this table
-// this is set up in the models
+router.delete('/:id', async (req, res) => {
+  try {
+    const hashtagData = await HashTagNiche.destroy({
+      where: {
+        hashtag_id: req.params.id,
+        // user_id: req.session.user_id,
+      },
+    });
+
+    if (!hashtagData) {
+      res.status(404).json({ message: 'No niche found with this id!' });
+      return;
+    }
+
+    res.status(200).json(hashtagData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;
