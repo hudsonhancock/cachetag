@@ -91,8 +91,9 @@ if (event.target.hasAttribute('data-id')) {
 }
 
 }
-var input = document.getElementById("searchInput"); 
-var searchBtn = document.getElementById("searchBtn"); 
+
+// var input = document.getElementById("searchInput"); 
+// var searchBtn = document.getElementById("searchBtn"); 
 
 
 
@@ -103,11 +104,11 @@ var searchBtn = document.getElementById("searchBtn");
 // .addEventListener('submit', newNicheHandler);
 
 //this gets the value of search input, AKA the keyword 
-searchBtn.addEventListener("click", function(event) {
-    event.stopPropagation(); 
-    event.preventDefault(); 
-    console.log(input.value);  
-}); 
+// searchBtn.addEventListener("click", function(event) {
+//     event.stopPropagation(); 
+//     event.preventDefault(); 
+//     console.log(input.value);  
+// }); 
 
 
 // document
