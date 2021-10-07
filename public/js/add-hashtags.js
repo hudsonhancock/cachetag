@@ -7,7 +7,7 @@
 
   var getHashtag = (event) => {
       hashtag = event.target.dataset.hashtag;
-    hashtagId = event.target.dataset.hashtag_id;
+        hashtagId = event.target.dataset.hashtag_id;
       console.log("This is the hashtag: " + event.target.dataset.hashtag + "\n This is the hashtag_id: " + hashtagId);
   }; 
   
@@ -47,13 +47,13 @@
 
   }; 
   
-  savebtns.forEach(function(button) {
-  button.addEventListener("click", getHashtag);
-  }); 
+//   savebtns.forEach(function(button) {
+//   button.addEventListener("click", getHashtag);
+//   }); 
 
-  buttons.forEach(function(button) {
-    button.addEventListener("click", chooseNiche);
-  }); 
+//   buttons.forEach(function(button) {
+//     button.addEventListener("click", chooseNiche);
+//   }); 
    
 //     const niche_name = document.querySelector('#new_niche').value.trim();
   
@@ -80,11 +80,27 @@ event.preventDefault();
 if (event.target.hasAttribute('data-id')) {
     const id = event.target.getAttribute('data-id');
 
-var niche;
-var hashtag;
+    const response = await fetch(`/api/user_hashtag/${id}`, {
+    method: 'DELETE',
+    });
+    if (response.ok) {
+        document.location.replace('/savedHashtags');
+        } else {
+        alert('Failed to delete niche');
+        }
+}
 
+}
 var input = document.getElementById("searchInput"); 
 var searchBtn = document.getElementById("searchBtn"); 
+
+
+
+
+
+// document
+// .querySelector('.add_niche_form')
+// .addEventListener('submit', newNicheHandler);
 
 //this gets the value of search input, AKA the keyword 
 searchBtn.addEventListener("click", function(event) {
@@ -93,15 +109,13 @@ searchBtn.addEventListener("click", function(event) {
     console.log(input.value);  
 }); 
 
-//this grabs the hashtag that the user wants to save 
-var getHashtag = (event) => {
-    hashtag = event.target.dataset.hashtag;
-    console.log("This is the hashtag: " + event.target.dataset.hashtag);
-}; 
 
 // document
 // .querySelector('.savedHashtagsPage')
 // .addEventListener('click', delButtonHandler);
+
+// const saveBtnEl = document.querySelector('#save_niche');
+// saveBtnEl.addEventListener('click', newNicheHandler);
 
 
 buttons.forEach(function(button) {
@@ -111,4 +125,4 @@ buttons.forEach(function(button) {
 savebtns.forEach(function(button) {
 button.addEventListener("click", getHashtag);
 }); 
-  
+
