@@ -1,5 +1,6 @@
   var buttons = document.querySelectorAll(".dropdown-content"); 
   var savebtns = document.querySelectorAll(".saveButtonDiv");  
+  var delbtns = document.querySelectorAll(".delete_hashtag");
   
   let niche;
   let hashtag;
@@ -122,20 +123,27 @@
 const delButtonHandler = async (event) => {
 event.stopPropagation(); 
 event.preventDefault(); 
+
 if (event.target.hasAttribute('data-id')) {
     const id = event.target.getAttribute('data-id');
-
+    const nicheID = event.target.getAttribute("data-nicheID");
+    console.log(nicheID);
     const response = await fetch(`/api/user_hashtag/${id}`, {
     method: 'DELETE',
     });
-    if (response.ok) {
-        document.location.replace('/savedHashtags');
-        } else {
-        alert('Failed to delete niche');
-        }
-}
 
-}
+    const collResponse = await fetch(`/api/collectiontags/${id}`, {
+      method: "DELETE",
+    });
+
+    if (response.ok) {
+        document.location.replace(`/hashtags/${nicheID}`);
+    } else {
+      alert('Failed to delete hashtag');
+    };
+};
+
+};
 
 // var input = document.getElementById("searchInput"); 
 // var searchBtn = document.getElementById("searchBtn"); 
@@ -172,3 +180,6 @@ savebtns.forEach(function(button) {
 button.addEventListener("click", getHashtag);
 }); 
 
+delbtns.forEach(function(button){
+  button.addEventListener("click", delButtonHandler);
+})
