@@ -15,6 +15,8 @@ router.get("/", async (req, res) => {
 // TODO: Add a connection to niche's on creation of hashtag
 router.post('/', async (req, res) => {
   try {
+    console.log(`REQUEST BODY RECEIVED BY /api/hashtag/`);
+    console.log(req.body);
     const newHashtag = await HashTag.create({
       text: req.body.hashtag
     });
