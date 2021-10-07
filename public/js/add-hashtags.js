@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   var getHashtag = (event) => {
       hashtag = event.target.dataset.hashtag;
-    hashtagId = event.target.dataset.hashtag_id;
+        hashtagId = event.target.dataset.hashtag_id;
       console.log("This is the hashtag: " + event.target.dataset.hashtag + "\n This is the hashtag_id: " + hashtagId);
   }; 
   
@@ -55,13 +55,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
   }; 
   
-  savebtns.forEach(function(button) {
-  button.addEventListener("click", getHashtag);
-  }); 
+//   savebtns.forEach(function(button) {
+//   button.addEventListener("click", getHashtag);
+//   }); 
 
-  buttons.forEach(function(button) {
-    button.addEventListener("click", chooseNiche);
-  }); 
+//   buttons.forEach(function(button) {
+//     button.addEventListener("click", chooseNiche);
+//   }); 
    
 //     const niche_name = document.querySelector('#new_niche').value.trim();
   
@@ -91,18 +91,25 @@ if (event.target.hasAttribute('data-id')) {
     const response = await fetch(`/api/user_hashtag/${id}`, {
     method: 'DELETE',
     });
-
     if (response.ok) {
-    document.location.replace('/savedHashtags');
-    } else {
-    alert('Failed to delete niche');
-    }
+        document.location.replace('/savedHashtags');
+        } else {
+        alert('Failed to delete niche');
+        }
 }
-};
+
+}
+var input = document.getElementById("searchInput"); 
+var searchBtn = document.getElementById("searchBtn"); 
+
+
+
+
 
 // document
 // .querySelector('.add_niche_form')
 // .addEventListener('submit', newNicheHandler);
+//this grabs the hashtag that the user wants to save 
 
 // document
 // .querySelector('.savedHashtagsPage')
@@ -110,3 +117,11 @@ if (event.target.hasAttribute('data-id')) {
 
 // const saveBtnEl = document.querySelector('#save_niche');
 // saveBtnEl.addEventListener('click', newNicheHandler);
+
+buttons.forEach(function(button) {
+  button.addEventListener("click", chooseNiche);
+}); 
+
+savebtns.forEach(function(button) {
+button.addEventListener("click", getHashtag);
+}); 
