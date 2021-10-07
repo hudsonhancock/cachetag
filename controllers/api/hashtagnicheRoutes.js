@@ -14,9 +14,10 @@ router.get("/", async (req, res) => {
 // route to add a new entry to the hashtag_niche table
 router.post("/", async (req, res) => {
   try {
-    const hashtagnicheData = await HashTagNiche.create(
-      ...req.body
-    );
+    const hashtagnicheData = await HashTagNiche.create({
+      niche_id: req.body.niche_id,
+      hashtag_id: req.body.hashtag_id
+    });
     res.status(200).json(hashtagnicheData);
   } catch (err) {
     res.status(500).json(err);
