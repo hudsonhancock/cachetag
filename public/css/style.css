@@ -39,7 +39,13 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  background-color: whitesmoke;
 }
+
+p{
+  color: #fff;
+}
+
 main {
   flex: 1 0 auto;
 }
@@ -48,9 +54,10 @@ main {
 .custom_container {
   /* background-color: var(--ocean);  */
   /* border: 5px solid var(--canary);  */
-  /* border-radius: var(--round); */
+  border-radius: var(--round);
   padding: var(--round); 
   /* color: white;  */
+  background-color: #fff;
   margin-top: 50px;
   margin-bottom: 50px; 
   box-shadow: 3px 3px 8px grey;
