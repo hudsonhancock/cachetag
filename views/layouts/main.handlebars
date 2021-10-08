@@ -11,13 +11,16 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@900&display=swap" rel="stylesheet">
   <!-- My style sheet -->
   <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
   {{!-- Nav Bar --}}
-  <nav>
+  <nav class="">
     {{!-- Side Nav --}}
     <ul id="slide-out" class="sidenav">
       {{#if logged_in}}
@@ -32,7 +35,7 @@
     <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>  
 
     <div class="custom_nav">
-      <a href="/" class="brand-logo"><img src="/assets/cache_tag_logo.png" width="150px"></a>
+      <a href="/" id="logo" class="brand-logo">cachetag</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         {{#if logged_in}}
         <li><a href="/profile">Profile</a></li>
@@ -56,7 +59,7 @@
       <div class="container">
         <div class="row">
           <div class="col l6 s12">
-            <h5 class="white-text">CacheTag</h5>
+            <h5 id="footerlogo" class="white-text">cachetag</h5>
             <p class="text-lighten-4">A hashtag generating app where users can choose their niche, get and store tags, and then copy them to a clipboard for use in other websites.</p>
           </div>
           <div class="col l4 offset-l2 s12">
