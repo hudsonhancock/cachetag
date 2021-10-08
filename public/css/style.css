@@ -34,6 +34,16 @@ li{
   font-size: larger;
 }
 
+/* Body */
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+main {
+  flex: 1 0 auto;
+}
+
 /* Page Containers */
 .custom_container {
   /* background-color: var(--ocean);  */
