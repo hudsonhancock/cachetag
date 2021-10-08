@@ -36,22 +36,23 @@ li{
 
 /* Page Containers */
 .custom_container {
-  background-color: var(--ocean); 
-  border: 5px solid var(--canary); 
-  border-radius: var(--round);
+  /* background-color: var(--ocean);  */
+  /* border: 5px solid var(--canary);  */
+  /* border-radius: var(--round); */
   padding: var(--round); 
-  color: white; 
+  /* color: white;  */
   margin-top: 50px;
   margin-bottom: 50px; 
   box-shadow: 3px 3px 8px grey;
 }
 .page_header {
-  background-color: var(--canary);
+  /* background-color: var(--canary); */
   text-align: center;
-  border: 3px solid white; 
-  border-radius: var(--round);
+  /* border: 3px solid white;  */
+  font-size: 30px;
+  /* border-radius: var(--round); */
   padding: 10px; 
-  caret-color: transparent;
+  /* caret-color: transparent; */
 }
 .sub_container {
   background-color: var(--salmon);
