@@ -113,7 +113,7 @@ li{
 .niche_btn {
   border: 2px solid white; 
   border-radius: var(--round);
-  height: 150px; 
+  height: 50px; 
   width: 150px; 
   margin: 25px; 
   color: white; 
@@ -129,4 +129,10 @@ li{
 /* Add Niche */
 #label_text {
   color: var(--light);
+}
+
+/* Footer */
+#footerlogo{
+  font-family: 'Archivo', sans-serif;
+  /* margin-left: 20px; */
 }
