@@ -63,8 +63,8 @@ router.get("/:keyword", async (req, res) => {
 		const yniche = xniche[0];
 		const niches = yniche.niches;
 		//console.log("This is yniche: " + JSON.stringify(yniche, null, 2));
-		console.log(niches);
-		console.log(hashtags);
+		//console.log(niches);
+		//console.log(hashtags);
 		// hashtags = ["test1", "test2", "test3"];
 		res.render("addHashtag", {
 			hashtags,
