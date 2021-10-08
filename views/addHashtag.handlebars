@@ -8,15 +8,13 @@
         id="searchInput"
       ></textarea>
 
-      <button id="searchBtn" class="btn save_btn"><i
-          class="material-icons save_icon"
-        >search</i></button>
+      <button id="searchBtn" class="btn save_btn material-icons save_icon">search</button>
 
     </div>
   </div>
   <div class="sub_container flex">
     {{#each hashtags as |hashtag|}}
-      <p>#{{text}}</p>
+      <p>#{{hashtag}}</p>
       <button class="btn save_btn dropdown-trigger" data-target="dropdown1"><i
           class="material-icons save_icon"
         >save</i></button>
