@@ -18,9 +18,20 @@
   color: white; 
   font-weight: bold;
 }
+
+#logo{
+  font-family: 'Archivo', sans-serif;
+  margin-left: 20px;
+}
+
 nav {
-  height: 80px;
-  background-color: var(--salmon);
+  /* height: 80px; */
+  background-color: var(--golden);
+background-image: linear-gradient(315deg, var(--canary) 0%, var(--salmon) 90%);
+}
+
+li{
+  font-size: larger;
 }
 
 /* Page Containers */
