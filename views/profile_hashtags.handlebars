@@ -2,7 +2,7 @@
 <!-- Each Niche that the user has saved will be displayed here. When User clicks on a niche button it will show them the hashtags that are related to that niche -->
 <div class="flex overflow">
   {{#each hashtags as |hashtag|}}
-  <button class="niche_btn">{{hashtag.text}}</button>
+    <button class="niche_btn">#{{hashtag.text}}</button>
   {{/each}}
 </div>
 

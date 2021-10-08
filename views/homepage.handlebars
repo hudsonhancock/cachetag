@@ -1,35 +1,46 @@
 <!-- Trending Page -->
-<h1 class="page_header">What's Hot!</h1>
-  <!-- This will display the top 10 trending hashtags -->
-  <div class="sub_container">
-    {{#each hashtagArr as |hashtag| }}
+<h1 class="page_header">What's Hot!🔥</h1>
+<!-- This will display the top 10 trending hashtags -->
+<div class="sub_container">
+  {{#each hashtagArr as |hashtag|}}
     <div class="flex_row">
-      <p class="hashtag_text">{{text}}</p>
+      <p class="hashtag_text">#{{text}}</p>
       <div class="saveButtonDiv" data-hashtag="{{text}}">
-      <button class="btn save_btn dropdown-trigger" id="{{@index}}" data-hashtag_id="{{id}}" data-hashtag="{{text}}" data-target="dropdown1"><i data-hashtag="{{text}}" class="material-icons save_icon">save</i></button>
+        <button
+          class="btn save_btn dropdown-trigger"
+          id="{{@index}}"
+          data-hashtag_id="{{id}}"
+          data-hashtag="{{text}}"
+          data-target="dropdown1"
+        ><i
+            data-hashtag="{{text}}"
+            class="material-icons save_icon"
+          >save</i></button>
       </div>
-    </div>  
-    {{/each}}
-  </div>
+    </div>
+  {{/each}}
+</div>
 
-{{!-- <button class="btn save_btn dropdown-trigger" data-target='dropdown1'><i class="material-icons save_icon">save</i></button> --}}
-    <!-- When User clicks on the save icon, then it shows a dropdown list of the user's saved niches -->
-    {{!-- <ul id='dropdown1' class='dropdown-content'> --}}
-        <ul id='dropdown1' class='dropdown-content'>
-        {{#each niches as |niche| }}
-        <li id="{{ niche_id }}"><a class="niche" id="{{ niche_id }}">{{ niche_name }}</a></li>
-        {{/each}}
-        </ul>
+{{! <button class="btn save_btn dropdown-trigger" data-target='dropdown1'><i class="material-icons save_icon">save</i></button> }}
+<!-- When User clicks on the save icon, then it shows a dropdown list of the user's saved niches -->
+{{! <ul id='dropdown1' class='dropdown-content'> }}
+<ul id="dropdown1" class="dropdown-content">
+  {{#each niches as |niche|}}
+    <li id="{{niche_id}}"><a
+        class="niche"
+        id="{{niche_id}}"
+      >{{niche_name}}</a></li>
+  {{/each}}
+</ul>
 
-    <!-- Save Options Dropdown -->
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.dropdown-trigger');
-    var instances = M.Dropdown.init(elems);
-  });
-  
-    </script>
+<!-- Save Options Dropdown -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() { var elems =
+  document.querySelectorAll('.dropdown-trigger'); var instances =
+  M.Dropdown.init(elems); });
+
+</script>
 <script src="/js/add-hashtags.js">
 
 </script>
-{{!-- <script src="../public/js/saveButton.js"></script> --}}
+{{! <script src="../public/js/saveButton.js"></script> }}
