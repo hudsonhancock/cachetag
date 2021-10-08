@@ -1,34 +1,41 @@
 <h1 class="page_header">Add A Hashtag</h1>
-    <form class="col s12">
-    <div class="row">
-        <div class="input-field col s12 flex_row">
-        <textarea placeholder="Search for a Hashtag" class="materialize-textarea" id="searchInput"></textarea>
-        
-            <button id="searchBtn" class="btn save_btn material-icons save_icon">search</button>
-                
-        </div>
+<form class="col s12">
+  <div class="row">
+    <div class="input-field col s12 flex_row">
+      <textarea
+        placeholder="Search for a Hashtag"
+        class="materialize-textarea"
+        id="searchInput"
+      ></textarea>
+
+      <button id="searchBtn" class="btn save_btn"><i
+          class="material-icons save_icon"
+        >search</i></button>
+
     </div>
-    <div class="sub_container flex">
-        {{#each hashtags as |hashtag|}}
-        <p>{{text}}</p>
-        <button class="btn save_btn dropdown-trigger" data-target='dropdown1'><i class="material-icons save_icon">save</i></button>
-        {{/each}}
-        
-        <!-- When User clicks on the save icon, then it shows a dropdown list of the user's saved niches -->
-        <ul id='dropdown1' class='dropdown-content'>
-        {{#each niches as |niche|}}
+  </div>
+  <div class="sub_container flex">
+    {{#each hashtags as |hashtag|}}
+      <p>#{{text}}</p>
+      <button class="btn save_btn dropdown-trigger" data-target="dropdown1"><i
+          class="material-icons save_icon"
+        >save</i></button>
+    {{/each}}
+
+    <!-- When User clicks on the save icon, then it shows a dropdown list of the user's saved niches -->
+    <ul id="dropdown1" class="dropdown-content">
+      {{#each niches as |niche|}}
         <li><a>{{niche_name}}</a></li>
-        {{/each}}
-        </ul>
-    </div>
-    </form>
+      {{/each}}
+    </ul>
+  </div>
+</form>
 
 <!-- Save Options Dropdown -->
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-  var elems = document.querySelectorAll('.dropdown-trigger');
-  var instances = M.Dropdown.init(elems);
-});
+  document.addEventListener('DOMContentLoaded', function() { var elems =
+  document.querySelectorAll('.dropdown-trigger'); var instances =
+  M.Dropdown.init(elems); });
 </script>
 
 <script src="/js/add-hashtags.js"></script>

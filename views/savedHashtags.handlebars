@@ -4,7 +4,7 @@
   <div class="sub_container">
     {{#each hashtags as |hashtag|}}
     <div class="flex_row"
-        <p>{{hashtag.text}}</p>
+        <p>#{{hashtag.text}}</p>
         <button type="button" data-id="{{hashtag.hashtag_id}}" data-nicheID="{{../niche_id}}" class="btn save_btn delete_hashtag material-icons">delete</button>
     </div>
     {{/each}}
