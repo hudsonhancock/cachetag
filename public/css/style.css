@@ -154,3 +154,12 @@ main {
   font-family: 'Archivo', sans-serif;
   /* margin-left: 20px; */
 }
+
+
+/* MEDIA QUERIES */
+@media only screen and (max-width: 600px) {
+  #logo{
+    /* font-family: 'Archivo', sans-serif; */
+    margin-left: 0px;
+  }
+}
